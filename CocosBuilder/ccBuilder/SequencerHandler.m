@@ -83,7 +83,7 @@ static SequencerHandler* sharedSequencerHandler = nil;
     
     [outlineHierarchy registerForDraggedTypes:[NSArray arrayWithObjects: @"com.cocosbuilder.node", @"com.cocosbuilder.texture", @"com.cocosbuilder.template", @"com.cocosbuilder.ccb", NULL]];
     
-    [[[outlineHierarchy outlineTableColumn] dataCell] setEditable:YES];
+//    [[[outlineHierarchy outlineTableColumn] dataCell] setEditable:YES];
     
     return self;
 }
@@ -224,7 +224,7 @@ static SequencerHandler* sharedSequencerHandler = nil;
     currentSequence.timelineOffset = newOffset;
 }
 
-#pragma mark Outline view
+#pragma mark Update Outline view
 
 - (void) updateOutlineViewSelection
 {
@@ -378,16 +378,16 @@ static SequencerHandler* sharedSequencerHandler = nil;
     return node.displayName;
 }
 
-- (void) outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
-{
-    CCNode* node = item;
-    
-    if (![object isEqualToString:node.displayName])
-    {
-        [[CocosBuilderAppDelegate appDelegate] saveUndoStateWillChangeProperty:@"*nodeDisplayName"];
-        node.displayName = object;
-    }
-}
+//- (void) outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
+//{
+//    CCNode* node = item;
+//    
+//    if (![object isEqualToString:node.displayName])
+//    {
+//        [[CocosBuilderAppDelegate appDelegate] saveUndoStateWillChangeProperty:@"*nodeDisplayName"];
+//        node.displayName = object;
+//    }
+//}
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView writeItems:(NSArray *)items toPasteboard:(NSPasteboard *)pboard
 {

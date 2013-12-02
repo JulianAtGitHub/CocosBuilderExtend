@@ -7,6 +7,7 @@
 //
 
 #import "SequencerHandlerAuxiliary.h"
+#import "CocosBuilderAppDelegate.h"
 #import "CCBGlobals.h"
 #import "NodeInfo.h"
 #import "PlugInNode.h"
@@ -29,6 +30,8 @@ static SequencerHandlerAuxiliary *sharedSequencerHandlerAuxiliary = nil;
     self = [super init];
     if (!self) return nil;
     
+    appDelegate = [CocosBuilderAppDelegate appDelegate];
+    
     sharedSequencerHandlerAuxiliary = self;
     
     outlineStructure = view;
@@ -38,6 +41,59 @@ static SequencerHandlerAuxiliary *sharedSequencerHandlerAuxiliary = nil;
     [outlineStructure reloadData];
     
     return self;
+}
+
+#pragma mark Update Outline view
+
+- (void) updateOutlineViewSelection
+{
+    if (!appDelegate.selectedNodes.count)
+    {
+        [outlineStructure selectRowIndexes:[NSIndexSet indexSet] byExtendingSelection:NO];
+        return;
+    }
+    CCBGlobals* g = [CCBGlobals globals];
+    
+    // Expand parents of the selected node
+    CCNode* node = [appDelegate.selectedNodes objectAtIndex:0];
+    NSMutableArray* nodesToExpand = [NSMutableArray array];
+    while (node != g.rootNode && node != NULL)
+    {
+        [nodesToExpand insertObject:node atIndex:0];
+        node = node.parent;
+    }
+    for (int i = 0; i < [nodesToExpand count]; i++)
+    {
+        node = [nodesToExpand objectAtIndex:i];
+        [outlineStructure expandItem:node.parent];
+    }
+    
+    // Update the selection
+    NSMutableIndexSet* indexes = [NSMutableIndexSet indexSet];
+    
+    for (CCNode* selectedNode in appDelegate.selectedNodes)
+    {
+        int row = (int)[outlineStructure rowForItem:selectedNode];
+        [indexes addIndex:row];
+    }
+    [outlineStructure selectRowIndexes:indexes byExtendingSelection:NO];
+}
+
+- (void) updateExpandedForNode:(CCNode*)node
+{
+    if ([self outlineView:outlineStructure isItemExpandable:node])
+    {
+        bool expanded = [[node extraPropForKey:@"isExpanded"] boolValue];
+        if (expanded) [outlineStructure expandItem:node];
+        else [outlineStructure collapseItem:node];
+        
+        CCArray* childs = [node children];
+        for (int i = 0; i < [childs count]; i++)
+        {
+            CCNode* child = [childs objectAtIndex:i];
+            [self updateExpandedForNode:child];
+        }
+    }
 }
 
 #pragma mark Outline View Data Source
@@ -87,6 +143,36 @@ static SequencerHandlerAuxiliary *sharedSequencerHandlerAuxiliary = nil;
     
     CCNode* node = item;
     return node.displayName;
+}
+
+#pragma mark Outline view Delegate
+
+- (void)outlineViewSelectionDidChange:(NSNotification *)notification
+{
+    NSIndexSet* indexes = [outlineStructure selectedRowIndexes];
+    NSMutableArray* selectedNodes = [NSMutableArray array];
+    
+    [indexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop){
+        id item = [outlineStructure itemAtRow:idx];
+        CCNode* node = item;
+        [selectedNodes addObject:node];
+    }];
+    
+    appDelegate.selectedNodes = selectedNodes;
+    
+    [appDelegate updateInspectorFromSelection];
+}
+
+- (void)outlineViewItemDidCollapse:(NSNotification *)notification
+{
+    CCNode* node = [[notification userInfo] objectForKey:@"NSObject"];
+    [node setExtraProp:[NSNumber numberWithBool:NO] forKey:@"isExpanded"];
+}
+
+- (void)outlineViewItemDidExpand:(NSNotification *)notification
+{
+    CCNode* node = [[notification userInfo] objectForKey:@"NSObject"];
+    [node setExtraProp:[NSNumber numberWithBool:YES] forKey:@"isExpanded"];
 }
 
 @end

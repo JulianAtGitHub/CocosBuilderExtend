@@ -504,6 +504,7 @@ static CocosBuilderAppDelegate* sharedAppDelegate;
     }
     
     [sequenceHandler updateOutlineViewSelection];
+    [sequencerHandlerAuxiliary updateOutlineViewSelection];
     
     // Handle undo/redo
     if (currentDocument) currentDocument.lastEditedProperty = NULL;
@@ -1088,11 +1089,15 @@ static BOOL hideAllToNextSeparator;
     self.selectedNodes = NULL;
     [[CocosScene cocosScene] replaceRootNodeWith:loadedRoot];
     [outlineHierarchy reloadData];
-    [outlineStructure reloadData];
     [sequenceHandler updateOutlineViewSelection];
+    
+    [outlineStructure reloadData];
+    [sequencerHandlerAuxiliary updateOutlineViewSelection];
+    
     [self updateInspectorFromSelection];
     
     [sequenceHandler updateExpandedForNode:g.rootNode];
+    [sequencerHandlerAuxiliary updateExpandedForNode:g.rootNode];
     
     // Setup guides
     id guides = [doc objectForKey:@"guides"];
@@ -1493,8 +1498,11 @@ static BOOL hideAllToNextSeparator;
     }
     
     [outlineHierarchy reloadData];
-    [outlineStructure reloadData];
     [sequenceHandler updateOutlineViewSelection];
+    
+    [outlineStructure reloadData];
+    [sequencerHandlerAuxiliary updateOutlineViewSelection];
+    
     [self updateInspectorFromSelection];
     
     self.currentDocument = [[[CCBDocument alloc] init] autorelease];
@@ -2035,6 +2043,7 @@ static BOOL hideAllToNextSeparator;
     
     self.selectedNodes = NULL;
     [sequenceHandler updateOutlineViewSelection];
+    [sequencerHandlerAuxiliary updateOutlineViewSelection];
 }
 
 - (IBAction) delete:(id) sender

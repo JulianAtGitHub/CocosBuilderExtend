@@ -8,16 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
+@class CCNode;
+@class CocosBuilderAppDelegate;
+
 @interface SequencerHandlerAuxiliary : NSObject <NSOutlineViewDataSource, NSOutlineViewDelegate> {
+    CocosBuilderAppDelegate *appDelegate;
     NSOutlineView *outlineStructure;
 }
 
 @property (nonatomic,assign) BOOL dragAndDropEnabled;
 
-@property (nonatomic,readonly) NSOutlineView* outlineStructure;
+@property (nonatomic,readonly) NSOutlineView *outlineStructure;
 
 + (SequencerHandlerAuxiliary *) sharedHandlerAuxiliary;
 
 - (instancetype) initWithOutlineView:(NSOutlineView *)view;
+
+- (void) updateOutlineViewSelection;
+- (void) updateExpandedForNode:(CCNode *)node;
 
 @end
