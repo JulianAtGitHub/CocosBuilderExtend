@@ -1,5 +1,5 @@
 //
-//  SequencerHandlerAuxiliary.h
+//  SequencerHandlerStructure.h
 //  CocosBuilder
 //
 //  Created by 朱 巍 on 30/11/13.
@@ -11,7 +11,7 @@
 @class CCNode;
 @class CocosBuilderAppDelegate;
 
-@interface SequencerHandlerAuxiliary : NSObject <NSOutlineViewDataSource, NSOutlineViewDelegate> {
+@interface SequencerHandlerStructure : NSObject <NSOutlineViewDataSource, NSOutlineViewDelegate> {
     CocosBuilderAppDelegate *appDelegate;
     NSOutlineView *outlineStructure;
 }
@@ -20,7 +20,7 @@
 
 @property (nonatomic,readonly) NSOutlineView *outlineStructure;
 
-+ (SequencerHandlerAuxiliary *) sharedHandlerAuxiliary;
++ (SequencerHandlerStructure *) sharedHandlerAuxiliary;
 
 - (instancetype) initWithOutlineView:(NSOutlineView *)view;
 

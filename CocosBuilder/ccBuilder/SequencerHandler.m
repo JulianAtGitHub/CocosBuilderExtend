@@ -882,10 +882,10 @@ static SequencerHandler* sharedSequencerHandler = nil;
 
 - (void) dealloc
 {
-    self.currentSequence = NULL;
-    self.scrubberSelectionView = NULL;
-    self.timeDisplay = NULL;
-    //self.sequences = NULL;
+    self.currentSequence = nil;
+    self.scrubberSelectionView = nil;
+    self.timeDisplay = nil;
+    //self.sequences = nil;
     
     [super dealloc];
 }

@@ -35,6 +35,7 @@
 #import "SequencerKeyframe.h"
 #import "SimpleAudioEngine.h"
 #import "ResourceManager.h"
+#import "SequencerHandlerTimeline.h"
 
 @implementation SequencerSequence
 
@@ -126,8 +127,14 @@
     if (tp != timelinePosition)
     {
         SequencerHandler* sh = [SequencerHandler sharedHandler];
+        SequencerHandlerTimeline *sht = [SequencerHandlerTimeline sharedHandlerTimeline];
         
         timelinePosition = tp;
+        
+        if (sht.currentSequence == self) {
+            [sht redrawTimeline:NO];
+            [sht updatePropertiesToTimelinePosition];
+        }
         
         if (sh.currentSequence == self)
         {
@@ -147,6 +154,7 @@
         // Make sure scroll is within bounds
         self.timelineOffset = timelineOffset;
         [[SequencerHandler sharedHandler] redrawTimeline];
+        [[SequencerHandlerTimeline sharedHandlerTimeline] redrawTimeline];
     }
 }
 
@@ -164,6 +172,7 @@
     {
         timelineOffset = to;
         [[SequencerHandler sharedHandler] redrawTimeline:NO];
+        [[SequencerHandlerTimeline sharedHandlerTimeline] redrawTimeline:NO];
     }
 }
 
@@ -177,6 +186,7 @@
     if (timelinePosition > timelineLength) timelinePosition = timelineLength;
     
     [[SequencerHandler sharedHandler] redrawTimeline];
+    [[SequencerHandlerTimeline sharedHandlerTimeline] redrawTimeline];
 }
 
 - (float) timeToPosition:(float)time

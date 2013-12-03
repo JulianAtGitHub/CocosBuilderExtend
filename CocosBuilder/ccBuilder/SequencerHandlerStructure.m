@@ -1,28 +1,29 @@
 //
-//  SequencerHandlerAuxiliary.m
+//  SequencerHandlerStructure.m
 //  CocosBuilder
 //
 //  Created by 朱 巍 on 30/11/13.
 //
 //
 
-#import "SequencerHandlerAuxiliary.h"
+#import "SequencerHandlerStructure.h"
 #import "CocosBuilderAppDelegate.h"
 #import "CCBGlobals.h"
 #import "NodeInfo.h"
 #import "PlugInNode.h"
 #import "CCNode+NodeInfo.h"
+#import "SequencerScrubberSelectionView.h"
 
-static SequencerHandlerAuxiliary *sharedSequencerHandlerAuxiliary = nil;
+static SequencerHandlerStructure *sharedSequencerHandlerStructure = nil;
 
-@implementation SequencerHandlerAuxiliary
+@implementation SequencerHandlerStructure
 
 @synthesize dragAndDropEnabled;
 @synthesize outlineStructure;
 
-+ (SequencerHandlerAuxiliary *) sharedHandlerAuxiliary
++ (SequencerHandlerStructure *) sharedHandlerAuxiliary
 {
-    return sharedSequencerHandlerAuxiliary;
+    return sharedSequencerHandlerStructure;
 }
 
 - (instancetype) initWithOutlineView:(NSOutlineView *)view
@@ -32,7 +33,7 @@ static SequencerHandlerAuxiliary *sharedSequencerHandlerAuxiliary = nil;
     
     appDelegate = [CocosBuilderAppDelegate appDelegate];
     
-    sharedSequencerHandlerAuxiliary = self;
+    sharedSequencerHandlerStructure = self;
     
     outlineStructure = view;
     
@@ -173,6 +174,13 @@ static SequencerHandlerAuxiliary *sharedSequencerHandlerAuxiliary = nil;
 {
     CCNode* node = [[notification userInfo] objectForKey:@"NSObject"];
     [node setExtraProp:[NSNumber numberWithBool:YES] forKey:@"isExpanded"];
+}
+
+#pragma mark Destructor
+
+- (void) dealloc
+{
+    [super dealloc];
 }
 
 @end

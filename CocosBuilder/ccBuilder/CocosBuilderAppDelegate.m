@@ -95,7 +95,8 @@
 #import "JavaScriptAutoCompleteHandler.h"
 #import "CCBFileUtil.h"
 #import "ResourceManagerPreviewView.h"
-#import "SequencerHandlerAuxiliary.h"
+#import "SequencerHandlerStructure.h"
+#import "SequencerHandlerTimeline.h"
 
 #import <ExceptionHandling/NSExceptionHandler.h>
 
@@ -184,7 +185,11 @@ static CocosBuilderAppDelegate* sharedAppDelegate;
     [self updateTimelineMenu];
     [sequenceHandler updateScaleSlider];
     
-    sequencerHandlerAuxiliary = [[SequencerHandlerAuxiliary alloc] initWithOutlineView:outlineStructure];
+    sequencerHandlerStructure = [[SequencerHandlerStructure alloc] initWithOutlineView:outlineStructure];
+    
+    sequencerHandlerTimeline = [[SequencerHandlerTimeline alloc] initWithOutlineView:outlineTimeline];
+    sequencerHandlerTimeline.scrubberSelectionView = singleScrubberSelectionView;
+    sequencerHandlerTimeline.scroller = singleTimelineScroller;
 }
 
 - (void) setupTabBar
@@ -504,7 +509,7 @@ static CocosBuilderAppDelegate* sharedAppDelegate;
     }
     
     [sequenceHandler updateOutlineViewSelection];
-    [sequencerHandlerAuxiliary updateOutlineViewSelection];
+    [sequencerHandlerStructure updateOutlineViewSelection];
     
     // Handle undo/redo
     if (currentDocument) currentDocument.lastEditedProperty = NULL;
@@ -1065,6 +1070,7 @@ static BOOL hideAllToNextSeparator;
         
         currentDocument.sequences = sequences;
         sequenceHandler.currentSequence = currentSeq;
+        sequencerHandlerTimeline.currentSequence = currentSeq;
     }
     else
     {
@@ -1080,6 +1086,7 @@ static BOOL hideAllToNextSeparator;
     
         currentDocument.sequences = sequences;
         sequenceHandler.currentSequence = seq;
+        sequencerHandlerTimeline.currentSequence = seq;
     }
     
     // Process contents
@@ -1092,12 +1099,12 @@ static BOOL hideAllToNextSeparator;
     [sequenceHandler updateOutlineViewSelection];
     
     [outlineStructure reloadData];
-    [sequencerHandlerAuxiliary updateOutlineViewSelection];
+    [sequencerHandlerStructure updateOutlineViewSelection];
     
     [self updateInspectorFromSelection];
     
     [sequenceHandler updateExpandedForNode:g.rootNode];
-    [sequencerHandlerAuxiliary updateExpandedForNode:g.rootNode];
+    [sequencerHandlerStructure updateExpandedForNode:g.rootNode];
     
     // Setup guides
     id guides = [doc objectForKey:@"guides"];
@@ -1161,14 +1168,15 @@ static BOOL hideAllToNextSeparator;
 
 - (void) closeLastDocument
 {
-    self.selectedNodes = NULL;
-    [[CocosScene cocosScene] replaceRootNodeWith:NULL];
+    self.selectedNodes = nil;
+    [[CocosScene cocosScene] replaceRootNodeWith:nil];
     [[CocosScene cocosScene] setStageSize:CGSizeMake(0, 0) centeredOrigin:YES];
     [[CocosScene cocosScene].guideLayer removeAllGuides];
     [[CocosScene cocosScene].notesLayer removeAllNotes];
-    [[CocosScene cocosScene].rulerLayer mouseExited:NULL];
-    self.currentDocument = NULL;
-    sequenceHandler.currentSequence = NULL;
+    [[CocosScene cocosScene].rulerLayer mouseExited:nil];
+    self.currentDocument = nil;
+    sequenceHandler.currentSequence = nil;
+    sequencerHandlerTimeline.currentSequence = nil;
     
     [self updateTimelineMenu];
     [outlineHierarchy reloadData];
@@ -1501,7 +1509,7 @@ static BOOL hideAllToNextSeparator;
     [sequenceHandler updateOutlineViewSelection];
     
     [outlineStructure reloadData];
-    [sequencerHandlerAuxiliary updateOutlineViewSelection];
+    [sequencerHandlerStructure updateOutlineViewSelection];
     
     [self updateInspectorFromSelection];
     
@@ -1525,7 +1533,7 @@ static BOOL hideAllToNextSeparator;
     
     currentDocument.sequences = sequences;
     sequenceHandler.currentSequence = seq;
-    
+    sequencerHandlerTimeline.currentSequence = seq;
     
     self.hasOpenedDocument = YES;
     
@@ -2003,6 +2011,7 @@ static BOOL hideAllToNextSeparator;
                 }
                 [keyframe.parent deleteKeyframesAfterTime:seq.timelineLength];
                 [[SequencerHandler sharedHandler] redrawTimeline];
+                [[SequencerHandlerStructure sharedHandlerAuxiliary] redrawTimeline];
             }
         }
         
@@ -2043,7 +2052,7 @@ static BOOL hideAllToNextSeparator;
     
     self.selectedNodes = NULL;
     [sequenceHandler updateOutlineViewSelection];
-    [sequencerHandlerAuxiliary updateOutlineViewSelection];
+    [sequencerHandlerStructure updateOutlineViewSelection];
 }
 
 - (IBAction) delete:(id) sender
@@ -2910,6 +2919,7 @@ static BOOL hideAllToNextSeparator;
         // Update the timelines
         currentDocument.sequences = wc.sequences;
         sequenceHandler.currentSequence = [currentDocument.sequences objectAtIndex:0];
+        sequencerHandlerTimeline.currentSequence = [currentDocument.sequences objectAtIndex:0];
     }
 }
 
@@ -2927,6 +2937,7 @@ static BOOL hideAllToNextSeparator;
     
     // and set it to current
     sequenceHandler.currentSequence = newSeq;
+    sequencerHandlerTimeline.currentSequence = newSeq;
 }
 
 - (IBAction)menuTimelineDuplicate:(id)sender
@@ -2942,6 +2953,7 @@ static BOOL hideAllToNextSeparator;
     
     // and set it to current
     sequenceHandler.currentSequence = newSeq;
+    sequencerHandlerTimeline.currentSequence = newSeq;
 }
 
 - (IBAction)menuTimelineDuration:(id)sender
@@ -3790,12 +3802,19 @@ static BOOL hideAllToNextSeparator;
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.cocos2d-iphone.org/forum/forum/16"]];
 }
 
-#pragma mark Left Navigate Bar
+#pragma mark Left Navigate Segment
 
-- (IBAction)segmentedControlSelectChanged:(id)sender
+- (IBAction)segmentedNavigateSelectChanged:(id)sender
 {
     [navigateTabView selectTabViewItemAtIndex:[sender selectedSegment]];
 }
+
+#pragma mark Time Line View Segment
+- (IBAction)segmentTimeLineSelectChanged:(id)sender
+{
+    [timelineTabView selectTabViewItemAtIndex:[sender selectedSegment]];
+}
+
 
 #pragma mark Debug
 

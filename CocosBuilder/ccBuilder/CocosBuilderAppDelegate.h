@@ -100,7 +100,8 @@ enum {
 @class CCBSplitHorizontalView;
 @class AboutWindow;
 @class ResourceManagerPreviewView;
-@class SequencerHandlerAuxiliary;
+@class SequencerHandlerStructure;
+@class SequencerHandlerTimeline;
 
 @interface CocosBuilderAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
 {
@@ -173,10 +174,15 @@ enum {
     IBOutlet NSMenuItem* menuItemChrome;
     IBOutlet NSMenuItem* menuItemFirefox;
     
-    // left panel tab
-    SequencerHandlerAuxiliary *sequencerHandlerAuxiliary;
+    // Heirarchy Auxiliary
+    SequencerHandlerStructure *sequencerHandlerStructure;
     IBOutlet NSTabView *navigateTabView;
     IBOutlet NSOutlineView *outlineStructure;
+    SequencerHandlerTimeline *sequencerHandlerTimeline;
+    IBOutlet NSTabView *timelineTabView;
+    IBOutlet NSOutlineView *outlineTimeline;
+    IBOutlet NSScroller* singleTimelineScroller;
+    IBOutlet SequencerScrubberSelectionView* singleScrubberSelectionView;
     
     // Resource manager
     ResourceManager* resManager;

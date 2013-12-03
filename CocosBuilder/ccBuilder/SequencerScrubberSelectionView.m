@@ -693,7 +693,6 @@
     self.lastDragEvent = theEvent;
     
     NSOutlineView* outlineView = [SequencerHandler sharedHandler].outlineHierarchy;
-    
     SequencerSequence* seq = [SequencerHandler sharedHandler].currentSequence;
     
     lastMousePosition = mouseLocation;

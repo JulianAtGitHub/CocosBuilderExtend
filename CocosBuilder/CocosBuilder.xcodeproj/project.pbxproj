@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2545F349184A06DE0012CFD8 /* SequencerHandlerAuxiliary.m in Sources */ = {isa = PBXBuildFile; fileRef = 2545F345184A06C90012CFD8 /* SequencerHandlerAuxiliary.m */; };
+		2545F349184A06DE0012CFD8 /* SequencerHandlerStructure.m in Sources */ = {isa = PBXBuildFile; fileRef = 2545F345184A06C90012CFD8 /* SequencerHandlerStructure.m */; };
 		581130601639C52500A86D70 /* seq-startmarker.png in Resources */ = {isa = PBXBuildFile; fileRef = 5811305F1639C52000A86D70 /* seq-startmarker.png */; };
 		581BCFE8162DADE7007DE600 /* CCBSplitHorizontalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 581BCFE7162DADE7007DE600 /* CCBSplitHorizontalView.m */; };
 		58FA2034162D73F3006B8856 /* TB_bottomPanel.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FA2031162D73F3006B8856 /* TB_bottomPanel.png */; };
 		58FA2035162D73F3006B8856 /* TB_leftPanel.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FA2032162D73F3006B8856 /* TB_leftPanel.png */; };
 		58FA2036162D73F3006B8856 /* TB_rightPanel.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FA2033162D73F3006B8856 /* TB_rightPanel.png */; };
+		62B2B3D3184D86D900B9F46D /* seq-btn-node.png in Resources */ = {isa = PBXBuildFile; fileRef = 62B2B3D1184D86D900B9F46D /* seq-btn-node.png */; };
+		62B2B3D4184D86D900B9F46D /* seq-btn-tree.png in Resources */ = {isa = PBXBuildFile; fileRef = 62B2B3D2184D86D900B9F46D /* seq-btn-tree.png */; };
+		62E0D0D1184DD7B4009B1B84 /* SequencerHandlerTimeline.m in Sources */ = {isa = PBXBuildFile; fileRef = 62E0D0D0184DD7B4009B1B84 /* SequencerHandlerTimeline.m */; };
 		77055FB513D0E5CA009DD63A /* logo-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 77055FB313D0E5CA009DD63A /* logo-icon.png */; };
 		77055FB613D0E5CA009DD63A /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 77055FB413D0E5CA009DD63A /* logo.png */; };
 		77156DB1137F0351005EF746 /* CCBSpriteSheetParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 77156DB0137F0351005EF746 /* CCBSpriteSheetParser.m */; };
@@ -866,8 +869,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2545F344184A06C90012CFD8 /* SequencerHandlerAuxiliary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SequencerHandlerAuxiliary.h; sourceTree = "<group>"; };
-		2545F345184A06C90012CFD8 /* SequencerHandlerAuxiliary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SequencerHandlerAuxiliary.m; sourceTree = "<group>"; };
+		2545F344184A06C90012CFD8 /* SequencerHandlerStructure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SequencerHandlerStructure.h; sourceTree = "<group>"; };
+		2545F345184A06C90012CFD8 /* SequencerHandlerStructure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SequencerHandlerStructure.m; sourceTree = "<group>"; };
 		5811305E1639BF1200A86D70 /* SequencerTimelineDrawDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SequencerTimelineDrawDelegate.h; sourceTree = "<group>"; };
 		5811305F1639C52000A86D70 /* seq-startmarker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seq-startmarker.png"; sourceTree = "<group>"; };
 		581BCFE6162DADE7007DE600 /* CCBSplitHorizontalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBSplitHorizontalView.h; sourceTree = "<group>"; };
@@ -875,6 +878,10 @@
 		58FA2031162D73F3006B8856 /* TB_bottomPanel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TB_bottomPanel.png; sourceTree = "<group>"; };
 		58FA2032162D73F3006B8856 /* TB_leftPanel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TB_leftPanel.png; sourceTree = "<group>"; };
 		58FA2033162D73F3006B8856 /* TB_rightPanel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TB_rightPanel.png; sourceTree = "<group>"; };
+		62B2B3D1184D86D900B9F46D /* seq-btn-node.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seq-btn-node.png"; sourceTree = "<group>"; };
+		62B2B3D2184D86D900B9F46D /* seq-btn-tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seq-btn-tree.png"; sourceTree = "<group>"; };
+		62E0D0CF184DD7B4009B1B84 /* SequencerHandlerTimeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SequencerHandlerTimeline.h; sourceTree = "<group>"; };
+		62E0D0D0184DD7B4009B1B84 /* SequencerHandlerTimeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SequencerHandlerTimeline.m; sourceTree = "<group>"; };
 		77055FB313D0E5CA009DD63A /* logo-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-icon.png"; sourceTree = "<group>"; };
 		77055FB413D0E5CA009DD63A /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		77156DAF137F0351005EF746 /* CCBSpriteSheetParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBSpriteSheetParser.h; sourceTree = "<group>"; };
@@ -2328,6 +2335,8 @@
 		776041F01498FD630078095D /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				62B2B3D1184D86D900B9F46D /* seq-btn-node.png */,
+				62B2B3D2184D86D900B9F46D /* seq-btn-tree.png */,
 				E37FCAEC175D2704009F81D6 /* ui-cogs.png */,
 				E37FCAED175D2704009F81D6 /* ui-cogs@2x.png */,
 				E39C917A174C134C00092BD1 /* toolbar-btn-add.png */,
@@ -2964,8 +2973,10 @@
 				E335CAF5157649F900A612EE /* SequencerExpandBtnCell.m */,
 				E335CAF1157603C200A612EE /* SequencerHandler.h */,
 				E335CAF2157603C200A612EE /* SequencerHandler.m */,
-				2545F344184A06C90012CFD8 /* SequencerHandlerAuxiliary.h */,
-				2545F345184A06C90012CFD8 /* SequencerHandlerAuxiliary.m */,
+				2545F344184A06C90012CFD8 /* SequencerHandlerStructure.h */,
+				2545F345184A06C90012CFD8 /* SequencerHandlerStructure.m */,
+				62E0D0CF184DD7B4009B1B84 /* SequencerHandlerTimeline.h */,
+				62E0D0D0184DD7B4009B1B84 /* SequencerHandlerTimeline.m */,
 				E36ECD0B15868F57003C177E /* SequencerKeyframe.h */,
 				E36ECD0C15868F57003C177E /* SequencerKeyframe.m */,
 				E3926186159C69D20034FF1D /* SequencerKeyframeEasing.h */,
@@ -4663,6 +4674,7 @@
 				E3926192159CAAA10034FF1D /* seq-keyframe-r-sel.png in Resources */,
 				E3926193159CAAA10034FF1D /* seq-keyframe-r.png in Resources */,
 				E3FD4DCF15A09F6D0032C2DD /* SequencerKeyframeEasingWindow.xib in Resources */,
+				62B2B3D4184D86D900B9F46D /* seq-btn-tree.png in Resources */,
 				E3FD4DDB15A301EF0032C2DD /* seq-next-seq.png in Resources */,
 				E3DFA7CD15ACA0CD005D3B6F /* frame-android-medium.png in Resources */,
 				E3DFA7CE15ACA0CD005D3B6F /* frame-android-small.png in Resources */,
@@ -4726,6 +4738,7 @@
 				E318CB3916D83F3B00348E0D /* InspectorPopoverFloatXY.xib in Resources */,
 				E390C77F170A2C9B003E9E92 /* AboutWindow.xib in Resources */,
 				E390C781170A371E003E9E92 /* version in Resources */,
+				62B2B3D3184D86D900B9F46D /* seq-btn-node.png in Resources */,
 				E334A4DE170CF475001604F7 /* seq-btn-end.png in Resources */,
 				E334A4DF170CF475001604F7 /* toolbar-bottom-noborder.png in Resources */,
 				E334A4E6170D0020001604F7 /* debugger-bug.png in Resources */,
@@ -4966,7 +4979,7 @@
 				772BE58E134BB6C00009B5B9 /* CCBDocument.m in Sources */,
 				772BE594134BC2BF0009B5B9 /* CCBReaderInternalV1.m in Sources */,
 				771B2B321353818200B260BA /* NewDocWindowController.m in Sources */,
-				2545F349184A06DE0012CFD8 /* SequencerHandlerAuxiliary.m in Sources */,
+				2545F349184A06DE0012CFD8 /* SequencerHandlerStructure.m in Sources */,
 				77156DB1137F0351005EF746 /* CCBSpriteSheetParser.m in Sources */,
 				77E1992013858D78006C361B /* NSBezierPath_AMShading.m in Sources */,
 				77E1992113858D78006C361B /* NSString_AITruncation.m in Sources */,
@@ -5148,6 +5161,7 @@
 				E3462867155BF6C50043EAB1 /* ResourceManagerOutlineHandler.m in Sources */,
 				E346286B155C18D80043EAB1 /* SavePanelLimiter.m in Sources */,
 				E3462870155D22290043EAB1 /* CCBPublisher.m in Sources */,
+				62E0D0D1184DD7B4009B1B84 /* SequencerHandlerTimeline.m in Sources */,
 				E3462873155D22FC0043EAB1 /* CCBWarnings.m in Sources */,
 				E32BBCB11561361200C58395 /* HashValue.m in Sources */,
 				E3DCFD9715627FCF00BD7D7F /* WarningsWindow.m in Sources */,
