@@ -12,7 +12,7 @@
 @class SequencerSequence;
 @class SequencerScrubberSelectionView;
 
-@interface SequencerHandlerTimeline : NSObject {
+@interface SequencerHandlerTimeline : NSObject <NSOutlineViewDataSource, NSOutlineViewDelegate> {
     
     CocosBuilderAppDelegate *appDelegate;
     
@@ -34,6 +34,8 @@
 + (SequencerHandlerTimeline *) sharedHandlerTimeline;
 
 - (instancetype) initWithOutlineView:(NSOutlineView *)view;
+
+- (void) toggleSeqExpanderForRow:(int)row;
 
 - (void) redrawTimeline:(BOOL) reload;
 - (void) redrawTimeline;

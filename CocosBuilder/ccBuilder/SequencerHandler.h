@@ -98,4 +98,8 @@
 
 - (void) menuAddKeyframeNamed:(NSString*)keyframeName;
 - (BOOL) canInsertKeyframeNamed:(NSString*)prop;
+
+- (void) menuSetSequence:(id)sender;
+- (void) menuSetChainedSequence:(id)sender;
+
 @end

@@ -510,6 +510,7 @@ static CocosBuilderAppDelegate* sharedAppDelegate;
     
     [sequenceHandler updateOutlineViewSelection];
     [sequencerHandlerStructure updateOutlineViewSelection];
+    [sequencerHandlerTimeline redrawTimeline];
     
     // Handle undo/redo
     if (currentDocument) currentDocument.lastEditedProperty = NULL;

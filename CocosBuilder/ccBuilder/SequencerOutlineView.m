@@ -45,7 +45,8 @@
     NSPoint mouseLocationInTable = [self convertPoint:
                                     mouseLocationInWindow fromView: NULL];
     
-    SequencerHandler* sh = (SequencerHandler*) [self dataSource];
+//    SequencerHandler* sh = (SequencerHandler*) [self dataSource];
+    id sh = [self dataSource];
     
     NSInteger column = [self columnAtPoint:mouseLocationInTable];
     
@@ -57,13 +58,13 @@
     }
     else if (column == [self columnWithIdentifier:@"expander"])
     {
-        sh.dragAndDropEnabled = NO;
+        [sh setDragAndDropEnabled:NO];
         [sh toggleSeqExpanderForRow:(int)[self rowAtPoint:mouseLocationInTable]];
         return;
     }
     else if (column == [self columnWithIdentifier:@"structure"])
     {
-        sh.dragAndDropEnabled = YES;
+        [sh setDragAndDropEnabled:YES];
     }
     
     [super mouseDown: theEvent];

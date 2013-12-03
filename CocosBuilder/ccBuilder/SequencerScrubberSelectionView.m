@@ -35,6 +35,7 @@
 #import "SequencerCallbackChannel.h"
 #import "SequencerSoundChannel.h"
 #import "SequencerPopoverHandler.h"
+#import "SequencerHandlerTimeline.h"
 
 @implementation SequencerScrubberSelectionView
 
@@ -784,6 +785,7 @@
         {
             [[SequencerHandler sharedHandler].outlineHierarchy reloadData];
             [[SequencerHandler sharedHandler] updatePropertiesToTimelinePosition];
+            [[SequencerHandlerTimeline sharedHandlerTimeline] updatePropertiesToTimelinePosition];
         }
     }
 }

@@ -7,13 +7,17 @@
 //
 
 #import "SequencerHandlerTimeline.h"
+#import "SequencerHandler.h"
 #import "CCBGlobals.h"
 #import "NodeInfo.h"
 #import "CCNode+NodeInfo.h"
 #import "PlugInNode.h"
 #import "CocosBuilderAppDelegate.h"
 #import "SequencerSequence.h"
-#include "SequencerScrubberSelectionView.h"
+#import "SequencerScrubberSelectionView.h"
+#import "SequencerExpandBtnCell.h"
+#import "SequencerCell.h"
+#import "SequencerStructureCell.h"
 
 static SequencerHandlerTimeline *sharedSequencerHandlerTimeline = nil;
 
@@ -41,9 +45,9 @@ static SequencerHandlerTimeline *sharedSequencerHandlerTimeline = nil;
     
     outlineTimeline = view;
     
-//    [outlineTimeline setDataSource:self];
-//    [outlineTimeline setDelegate:self];
-//    [outlineTimeline reloadData];
+    [outlineTimeline setDataSource:self];
+    [outlineTimeline setDelegate:self];
+    [outlineTimeline reloadData];
     
     return self;
 }
@@ -53,7 +57,7 @@ static SequencerHandlerTimeline *sharedSequencerHandlerTimeline = nil;
     [scrubberSelectionView setNeedsDisplay:YES];
     [self updateScroller];
     if (reload) {
-//        [outlineTimeline reloadData];
+        [outlineTimeline reloadData];
     }
 }
 
@@ -69,7 +73,7 @@ static SequencerHandlerTimeline *sharedSequencerHandlerTimeline = nil;
         [currentSequence release];
         currentSequence = [seq retain];
         
-//        [outlineTimeline reloadData];
+        [outlineTimeline reloadData];
         [self redrawTimeline];
         [self updatePropertiesToTimelinePosition];
     }
@@ -123,6 +127,53 @@ static SequencerHandlerTimeline *sharedSequencerHandlerTimeline = nil;
 
 #pragma mark Handle scroller
 
+- (void) setScroller:(NSScroller *)s
+{
+    if (s != scroller)
+    {
+        [scroller release];
+        scroller = [s retain];
+        
+        [scroller setTarget:self];
+        [scroller setAction:@selector(scrollerUpdated:)];
+        
+        [self updateScroller];
+    }
+}
+
+- (void) scrollerUpdated:(id)sender
+{
+    float newOffset = currentSequence.timelineOffset;
+    float visibleTime = [self visibleTimeArea];
+    
+    switch ([scroller hitPart]) {
+        case NSScrollerNoPart:
+            break;
+        case NSScrollerDecrementPage:
+            newOffset -= 300 / currentSequence.timelineScale;
+            break;
+        case NSScrollerKnob:
+            newOffset = scroller.doubleValue * (currentSequence.timelineLength - visibleTime);
+            break;
+        case NSScrollerIncrementPage:
+            newOffset += 300 / currentSequence.timelineScale;
+            break;
+        case NSScrollerDecrementLine:
+            newOffset -= 20 / currentSequence.timelineScale;
+            break;
+        case NSScrollerIncrementLine:
+            newOffset += 20 / currentSequence.timelineScale;
+            break;
+        case NSScrollerKnobSlot:
+            newOffset = scroller.doubleValue * (currentSequence.timelineLength - visibleTime);
+            break;
+        default:
+            break;
+    }
+    
+    currentSequence.timelineOffset = newOffset;
+}
+
 - (float) visibleTimeArea
 {
     NSTableColumn* column = [outlineTimeline tableColumnWithIdentifier:@"sequencer"];
@@ -173,6 +224,96 @@ static SequencerHandlerTimeline *sharedSequencerHandlerTimeline = nil;
             currentSequence.timelineOffset = scroller.doubleValue * (currentSequence.timelineLength - visibleTime);
         }
     }
+}
+
+#pragma mark Outline View Data Source
+- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
+{
+    if ([[CCBGlobals globals] rootNode] == NULL) return 0;
+    if ([appDelegate.selectedNodes count]) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+- (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item
+{
+    return [appDelegate.selectedNodes objectAtIndex:0];
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item
+{
+    return NO;
+}
+
+- (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
+{
+    if (item == nil) return @"Root";
+    
+    if ([tableColumn.identifier isEqualToString:@"sequencer"])
+    {
+        return @"";
+    }
+    
+    CCNode* node = item;
+    return node.displayName;
+}
+
+#pragma mark Outline View Delegate
+
+- (void) outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item
+{
+    CCNode* node = item;
+    BOOL isRootNode = (node == [CocosScene cocosScene].rootNode);
+    
+    if ([tableColumn.identifier isEqualToString:@"expander"])
+    {
+        SequencerExpandBtnCell* expCell = cell;
+        expCell.isExpanded = node.seqExpanded;
+        expCell.canExpand = (!isRootNode);
+        expCell.node = node;
+    }
+    else if ([tableColumn.identifier isEqualToString:@"structure"])
+    {
+        SequencerStructureCell* strCell = cell;
+        strCell.node = node;
+    }
+    else if ([tableColumn.identifier isEqualToString:@"sequencer"])
+    {
+        SequencerCell* seqCell = cell;
+        seqCell.node = node;
+    }
+}
+
+- (CGFloat) outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(id)item
+{
+    CCNode* node = item;
+    if (node.seqExpanded)
+    {
+        return kCCBSeqDefaultRowHeight * ([[node.plugIn animatablePropertiesForNode:node] count]);
+    }
+    else
+    {
+        return kCCBSeqDefaultRowHeight;
+    }
+}
+
+#pragma mark Outline View
+
+- (void) toggleSeqExpanderForRow:(int)row
+{
+    id item = [outlineTimeline itemAtRow:row];
+    
+    CCNode* node = item;
+    
+    if (node == [CocosScene cocosScene].rootNode && !node.seqExpanded) return;
+    //if ([NSStringFromClass(node.class) isEqualToString:@"CCBPCCBFile"] && !node.seqExpanded) return;
+    
+    node.seqExpanded = !node.seqExpanded;
+    
+    // Need to reload all data when changing heights of rows
+    [outlineTimeline reloadData];
 }
 
 #pragma mark Destructor
