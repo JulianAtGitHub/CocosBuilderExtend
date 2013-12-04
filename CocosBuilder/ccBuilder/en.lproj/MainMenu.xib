@@ -1369,8 +1369,8 @@ CA
                                         <segmentedCell key="cell" alignment="left" style="texturedRounded" trackingMode="selectOne" id="ffh-Nh-3MM">
                                             <font key="font" metaFont="system"/>
                                             <segments>
-                                                <segment image="seq-btn-node" width="32"/>
-                                                <segment image="seq-btn-tree" width="32" selected="YES" tag="1"/>
+                                                <segment image="seq-btn-node" width="32" selected="YES"/>
+                                                <segment image="seq-btn-tree" width="32" tag="1"/>
                                             </segments>
                                         </segmentedCell>
                                         <connections>
@@ -1412,7 +1412,7 @@ CA
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                         <sliderCell key="cell" controlSize="mini" continuous="YES" state="on" alignment="left" minValue="32" maxValue="512" doubleValue="128" tickMarkPosition="below" sliderType="linear" id="1565"/>
                                     </slider>
-                                    <tabView type="noTabsNoBorder" initialItem="uaB-vM-Ljj" id="xM2-1z-eSg">
+                                    <tabView type="noTabsNoBorder" initialItem="Jci-3C-De4" id="xM2-1z-eSg">
                                         <rect key="frame" x="0.0" y="0.0" width="595" height="139"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <font key="font" metaFont="system"/>

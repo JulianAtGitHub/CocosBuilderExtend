@@ -20,7 +20,7 @@
 
 @property (nonatomic,readonly) NSOutlineView *outlineStructure;
 
-+ (SequencerHandlerStructure *) sharedHandlerAuxiliary;
++ (SequencerHandlerStructure *) sharedHandlerStructure;
 
 - (instancetype) initWithOutlineView:(NSOutlineView *)view;
 

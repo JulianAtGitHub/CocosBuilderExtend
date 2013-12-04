@@ -179,6 +179,7 @@ enum {
     IBOutlet NSTabView *navigateTabView;
     IBOutlet NSOutlineView *outlineStructure;
     SequencerHandlerTimeline *sequencerHandlerTimeline;
+    NSInteger selectTimelineTab;
     IBOutlet NSTabView *timelineTabView;
     IBOutlet NSOutlineView *outlineTimeline;
     IBOutlet NSScroller* singleTimelineScroller;

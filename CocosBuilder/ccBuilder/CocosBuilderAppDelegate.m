@@ -97,6 +97,7 @@
 #import "ResourceManagerPreviewView.h"
 #import "SequencerHandlerStructure.h"
 #import "SequencerHandlerTimeline.h"
+#import "SequencerScrubberSelectionView.h"
 
 #import <ExceptionHandling/NSExceptionHandler.h>
 
@@ -176,6 +177,7 @@ static CocosBuilderAppDelegate* sharedAppDelegate;
 - (void) setupSequenceHandler
 {
     sequenceHandler = [[SequencerHandler alloc] initWithOutlineView:outlineHierarchy];
+    scrubberSelectionView.isForMainHandler = YES;
     sequenceHandler.scrubberSelectionView = scrubberSelectionView;
     sequenceHandler.timeDisplay = timeDisplay;
     sequenceHandler.timeScaleSlider = timeScaleSlider;
@@ -188,8 +190,11 @@ static CocosBuilderAppDelegate* sharedAppDelegate;
     sequencerHandlerStructure = [[SequencerHandlerStructure alloc] initWithOutlineView:outlineStructure];
     
     sequencerHandlerTimeline = [[SequencerHandlerTimeline alloc] initWithOutlineView:outlineTimeline];
+    singleScrubberSelectionView.isForMainHandler = NO;
     sequencerHandlerTimeline.scrubberSelectionView = singleScrubberSelectionView;
     sequencerHandlerTimeline.scroller = singleTimelineScroller;
+    
+    selectTimelineTab = 0;
 }
 
 - (void) setupTabBar
@@ -570,6 +575,7 @@ static CocosBuilderAppDelegate* sharedAppDelegate;
 - (void) windowDidResize:(NSNotification *)notification
 {
     [sequenceHandler updateScroller];
+    [sequencerHandlerTimeline updateScroller];
 }
 
 
@@ -1094,8 +1100,9 @@ static BOOL hideAllToNextSeparator;
     CCNode* loadedRoot = [CCBReaderInternal nodeGraphFromDocumentDictionary:doc parentSize:CGSizeMake(resolution.width, resolution.height)];
     
     // Replace open document
-    self.selectedNodes = NULL;
+    self.selectedNodes = nil;
     [[CocosScene cocosScene] replaceRootNodeWith:loadedRoot];
+    
     [outlineHierarchy reloadData];
     [sequenceHandler updateOutlineViewSelection];
     
@@ -1423,6 +1430,7 @@ static BOOL hideAllToNextSeparator;
     
     // Make sure timeline is up to date
     [sequenceHandler updatePropertiesToTimelinePosition];
+    [sequencerHandlerTimeline updatePropertiesToTimelinePosition];
     
 	[[[CCDirector sharedDirector] view] unlockOpenGLContext];
 }
@@ -1493,7 +1501,7 @@ static BOOL hideAllToNextSeparator;
     
     [[CocosScene cocosScene].notesLayer removeAllNotes];
     
-    self.selectedNodes = NULL;
+    self.selectedNodes = nil;
     [[CocosScene cocosScene] setStageSize:stageSize centeredOrigin:origin];
     
     // Create new node
@@ -2012,7 +2020,7 @@ static BOOL hideAllToNextSeparator;
                 }
                 [keyframe.parent deleteKeyframesAfterTime:seq.timelineLength];
                 [[SequencerHandler sharedHandler] redrawTimeline];
-                [[SequencerHandlerStructure sharedHandlerAuxiliary] redrawTimeline];
+                [[SequencerHandlerTimeline sharedHandlerTimeline] redrawTimeline];
             }
         }
         
@@ -2051,7 +2059,7 @@ static BOOL hideAllToNextSeparator;
     [outlineHierarchy reloadData];
     [outlineStructure reloadData];
     
-    self.selectedNodes = NULL;
+    self.selectedNodes = nil;
     [sequenceHandler updateOutlineViewSelection];
     [sequencerHandlerStructure updateOutlineViewSelection];
 }
@@ -2059,7 +2067,10 @@ static BOOL hideAllToNextSeparator;
 - (IBAction) delete:(id) sender
 {
     // First attempt to delete selected keyframes
-    if ([sequenceHandler deleteSelectedKeyframesForCurrentSequence]) return;
+    if ([sequenceHandler deleteSelectedKeyframesForCurrentSequence]) {
+        [sequencerHandlerTimeline redrawTimeline];
+        return;
+    }
     
     // Then delete the selected node
     NSArray* nodesToDelete = [NSArray arrayWithArray:self.selectedNodes];
@@ -2904,6 +2915,7 @@ static BOOL hideAllToNextSeparator;
             {
                 // Sequence deleted, remove from all nodes
                 [sequenceHandler deleteSequenceId:seq.sequenceId];
+                [sequencerHandlerTimeline redrawTimeline];
             }
         }
         
@@ -2987,6 +2999,7 @@ static BOOL hideAllToNextSeparator;
   
     [self switchToDocument:currentDocument forceReload:YES];
     [sequenceHandler updatePropertiesToTimelinePosition];
+    [sequencerHandlerTimeline updatePropertiesToTimelinePosition];
 }
 
 - (IBAction) menuAlignToPixels:(id)sender
@@ -3378,6 +3391,8 @@ static BOOL hideAllToNextSeparator;
     int easingType = [sender tag];
     [sequenceHandler setContextKeyframeEasingType:easingType];
     [sequenceHandler updatePropertiesToTimelinePosition];
+    [sequencerHandlerTimeline redrawTimeline];
+    [sequencerHandlerTimeline updatePropertiesToTimelinePosition];
 }
 
 - (IBAction)menuSetEasingOption:(id)sender
@@ -3414,6 +3429,7 @@ static BOOL hideAllToNextSeparator;
             [self saveUndoStateWillChangeProperty:@"*keyframeeasingoption"];
             sequenceHandler.contextKeyframe.easing.options = [NSNumber numberWithFloat:wc.option];
             [sequenceHandler updatePropertiesToTimelinePosition];
+            [sequencerHandlerTimeline updatePropertiesToTimelinePosition];
         }
     }
 }
@@ -3559,6 +3575,7 @@ static BOOL hideAllToNextSeparator;
 {
     int tag = [sender tag];
     [sequenceHandler menuAddKeyframeNamed:[self keyframePropNameFromTag:tag]];
+    [sequencerHandlerTimeline redrawTimeline];
 }
 
 - (IBAction)menuJavaScriptControlled:(id)sender
@@ -3685,7 +3702,7 @@ static BOOL hideAllToNextSeparator;
     }
     
     // Deselect all objects to improve performance
-    self.selectedNodes = NULL;
+//    self.selectedNodes = nil;
     
     // Start playback
     playbackLastFrameTime = [NSDate timeIntervalSinceReferenceDate];
@@ -3814,6 +3831,7 @@ static BOOL hideAllToNextSeparator;
 - (IBAction)segmentTimeLineSelectChanged:(id)sender
 {
     [timelineTabView selectTabViewItemAtIndex:[sender selectedSegment]];
+    selectTimelineTab = [sender selectedSegment];
 }
 
 

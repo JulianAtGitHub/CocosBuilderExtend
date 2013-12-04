@@ -40,26 +40,46 @@
 @implementation SequencerScrubberSelectionView
 
 @synthesize lastDragEvent;
+@synthesize isForMainHandler;
 
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
-    if (!self) return NULL;
+    if (!self) return nil;
     
+    self.isForMainHandler = YES;
     imgScrubHandle = [[NSImage imageNamed:@"seq-scrub-handle.png"] retain];
     imgScrubLine = [[NSImage imageNamed:@"seq-scrub-line.png"] retain];
     
     return self;
 }
 
+- (NSOutlineView *)getHandlerOutlineView
+{
+    if (isForMainHandler) {
+        return [SequencerHandler sharedHandler].outlineHierarchy;
+    } else {
+        return [SequencerHandlerTimeline sharedHandlerTimeline].outlineTimeline;
+    }
+}
+
+- (SequencerSequence *)getHandlerCurrentSequence
+{
+    if (isForMainHandler) {
+        return [SequencerHandler sharedHandler].currentSequence;
+    } else {
+        return [SequencerHandlerTimeline sharedHandlerTimeline].currentSequence;
+    }
+}
+
 - (float) activeWidth
 {
-    return [[SequencerHandler sharedHandler].outlineHierarchy tableColumnWithIdentifier:@"sequencer"].width;
+    return [[self getHandlerOutlineView] tableColumnWithIdentifier:@"sequencer"].width;
 }
 
 - (int) yMousePosToRow:(float)y
 {
-    NSOutlineView* outlineView = [SequencerHandler sharedHandler].outlineHierarchy;
+    NSOutlineView* outlineView = [self getHandlerOutlineView];
     
     NSPoint convPoint = [outlineView convertPoint:NSMakePoint(0, y) fromView:self];
     
@@ -71,7 +91,7 @@
 
 - (int) yMousePosToSubRow:(float)y
 {
-    NSOutlineView* outlineView = [SequencerHandler sharedHandler].outlineHierarchy;
+    NSOutlineView* outlineView = [self getHandlerOutlineView];
     
     int row = [self yMousePosToRow:y];
     if (row == kCCBRowNoneAbove || row == kCCBRowNoneBelow)
@@ -123,7 +143,7 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-    SequencerSequence* seq = [SequencerHandler sharedHandler].currentSequence;
+    SequencerSequence* seq = [self getHandlerCurrentSequence];
     
     // Draw selection
     NSGraphicsContext* gc = [NSGraphicsContext currentContext];
@@ -193,7 +213,7 @@
         float w = [seq timeToPosition:xMaxTime] - x;
         
         // Calc y/height
-        NSOutlineView* outline = [SequencerHandler sharedHandler].outlineHierarchy;
+        NSOutlineView* outline = [self getHandlerOutlineView];
         
         NSRect minRowRect = [outline rectOfRow:yMinRow];
         minRowRect.size.height = kCCBSeqDefaultRowHeight;
@@ -238,7 +258,7 @@
 
 - (void) updateAutoScrollHorizontal
 {
-    SequencerSequence* seq = [SequencerHandler sharedHandler].currentSequence;
+    SequencerSequence* seq = [self getHandlerCurrentSequence];
     
     if (autoScrollHorizontalDirection)
     {
@@ -339,7 +359,7 @@
 
 - (void) addKeyframeAtRow:(int)row sub:(int)sub time:(float) time
 {
-    NSOutlineView* outlineView = [SequencerHandler sharedHandler].outlineHierarchy;
+    NSOutlineView* outlineView = [self getHandlerOutlineView];
     
     // Get the double clicked node
     id item = [outlineView itemAtRow:row];
@@ -355,12 +375,12 @@
     CCNode* node = item;
     NSString* prop = [self propNameForNode:node subRow:sub];
     
-    [node addDefaultKeyframeForProperty:prop atTime:time sequenceId:[SequencerHandler sharedHandler].currentSequence.sequenceId];
+    [node addDefaultKeyframeForProperty:prop atTime:time sequenceId:[self getHandlerCurrentSequence].sequenceId];
 }
 
 - (SequencerKeyframe*) keyframeForRow:(int)row sub:(int)sub minTime:(float)minTime maxTime:(float)maxTime
 {
-    NSOutlineView* outlineView = [SequencerHandler sharedHandler].outlineHierarchy;
+    NSOutlineView* outlineView = [self getHandlerOutlineView];
     
     id item = [outlineView itemAtRow:row];
     
@@ -374,26 +394,26 @@
     CCNode* node = item;
     NSString* prop = [self propNameForNode:node subRow:sub];
     
-    SequencerNodeProperty* seqNodeProp = [node sequenceNodeProperty:prop sequenceId:[SequencerHandler sharedHandler].currentSequence.sequenceId];
+    SequencerNodeProperty* seqNodeProp = [node sequenceNodeProperty:prop sequenceId:[self getHandlerCurrentSequence].sequenceId];
     
     return [seqNodeProp keyframeBetweenMinTime:minTime maxTime:maxTime];
 }
 
 - (SequencerKeyframe*) keyframeForInterpolationInRow:(int)row sub:(int)sub time:(float)time
 {
-    NSOutlineView* outlineView = [SequencerHandler sharedHandler].outlineHierarchy;
+    NSOutlineView* outlineView = [self getHandlerOutlineView];
     CCNode* node = [outlineView itemAtRow:row];
     NSString* prop = [self propNameForNode:node subRow:sub];
     
-    SequencerNodeProperty* seqNodeProp = [node sequenceNodeProperty:prop sequenceId:[SequencerHandler sharedHandler].currentSequence.sequenceId];
+    SequencerNodeProperty* seqNodeProp = [node sequenceNodeProperty:prop sequenceId:[self getHandlerCurrentSequence].sequenceId];
     
     return [seqNodeProp keyframeForInterpolationAtTime:time];
 }
 
 - (NSArray*) keyframesInSelectionArea
 {
-    NSOutlineView* outlineView = [SequencerHandler sharedHandler].outlineHierarchy;
-    SequencerSequence* seq = [[SequencerHandler sharedHandler] currentSequence];
+    NSOutlineView* outlineView = [self getHandlerOutlineView];
+    SequencerSequence* seq = [self getHandlerCurrentSequence];
     
     NSMutableArray* selectedKeyframes = [NSMutableArray array];
     
@@ -540,11 +560,11 @@
         return;
     }
     
-    NSOutlineView* outlineView = [SequencerHandler sharedHandler].outlineHierarchy;
+    NSOutlineView* outlineView = [self getHandlerOutlineView];
     
     lastMousePosition = mouseLocation;
     
-    SequencerSequence* seq = [SequencerHandler sharedHandler].currentSequence;
+    SequencerSequence* seq = [self getHandlerCurrentSequence];
     
     // Calculate the clicked time and time span for hit area of keyframes
     float time = [seq positionToTime:mouseLocation.x];
@@ -591,6 +611,7 @@
                 if (!mouseDownKeyframe.selected)
                 {
                     [[SequencerHandler sharedHandler] deselectAllKeyframes];
+                    [[SequencerHandlerTimeline sharedHandlerTimeline] redrawTimeline];
                     mouseDownKeyframe.selected = YES;
                 }
                 
@@ -639,7 +660,8 @@
                 }
                 
                 // Start dragging keyframe(s)
-                for (SequencerKeyframe* keyframe in [[SequencerHandler sharedHandler] selectedKeyframesForCurrentSequence])
+                NSArray* selection = [[SequencerHandler sharedHandler] selectedKeyframesForCurrentSequence];
+                for (SequencerKeyframe* keyframe in selection)
                 {
                     keyframe.timeAtDragStart = keyframe.time;
                 }
@@ -693,8 +715,8 @@
     
     self.lastDragEvent = theEvent;
     
-    NSOutlineView* outlineView = [SequencerHandler sharedHandler].outlineHierarchy;
-    SequencerSequence* seq = [SequencerHandler sharedHandler].currentSequence;
+    NSOutlineView* outlineView = [self getHandlerOutlineView];
+    SequencerSequence* seq = [self getHandlerCurrentSequence];
     
     lastMousePosition = mouseLocation;
     int relMousePosX = (seq.timelineScale*seq.timelineOffset)+mouseLocation.x;
@@ -785,6 +807,7 @@
         {
             [[SequencerHandler sharedHandler].outlineHierarchy reloadData];
             [[SequencerHandler sharedHandler] updatePropertiesToTimelinePosition];
+            [[SequencerHandlerTimeline sharedHandlerTimeline].outlineTimeline reloadData];
             [[SequencerHandlerTimeline sharedHandlerTimeline] updatePropertiesToTimelinePosition];
         }
     }
@@ -795,7 +818,7 @@
     NSPoint mouseLocationInWindow = [theEvent locationInWindow];
     NSPoint mouseLocation = [self convertPoint: mouseLocationInWindow fromView: NULL];
     
-    NSOutlineView* outlineView = [SequencerHandler sharedHandler].outlineHierarchy;
+    NSOutlineView* outlineView = [self getHandlerOutlineView];
     
     // Check for out of bounds
     if (mouseLocation.x > [self activeWidth])
@@ -817,6 +840,7 @@
         else
         {
             [[SequencerHandler sharedHandler] deselectAllKeyframes];
+            [[SequencerHandlerTimeline sharedHandlerTimeline] redrawTimeline];
             NSArray* selectedKeyframes = [self keyframesInSelectionArea];
             for (SequencerKeyframe* keyframe in selectedKeyframes)
             {
@@ -830,12 +854,14 @@
         if (NSEqualPoints(mouseLocation, mouseDownPosition) && !didAutoScroll)
         {
             [[SequencerHandler sharedHandler] deselectAllKeyframes];
+            [[SequencerHandlerTimeline sharedHandlerTimeline] redrawTimeline];
             mouseDownKeyframe.selected = YES;
         }
         else
         {
             // Moved keyframes, clean up duplicates
             [[SequencerHandler sharedHandler] deleteDuplicateKeyframesForCurrentSequence];
+            [[SequencerHandlerTimeline sharedHandlerTimeline] redrawTimeline];
             [outlineView reloadData];
         }
     }
@@ -849,7 +875,7 @@
 
 - (void) scrollWheel:(NSEvent *)theEvent
 {
-    SequencerSequence* seq = [SequencerHandler sharedHandler].currentSequence;
+    SequencerSequence* seq = [self getHandlerCurrentSequence];
     
     seq.timelineOffset -= theEvent.deltaX/seq.timelineScale*4.0f;
     
@@ -870,7 +896,7 @@
     int row = [self yMousePosToRow:mouseLocation.y];
     if (row < 0) return NULL;
     
-    SequencerSequence* seq = [SequencerHandler sharedHandler].currentSequence;
+    SequencerSequence* seq = [self getHandlerCurrentSequence];
     int subRow = [self yMousePosToSubRow:mouseLocation.y];
     float timeMin = [seq positionToTime:mouseLocation.x - 3];
     float timeMax = [seq positionToTime:mouseLocation.x + 3];
@@ -880,10 +906,11 @@
     if (keyframe)
     {
         [SequencerHandler sharedHandler].contextKeyframe = keyframe;
+        [SequencerHandlerTimeline sharedHandlerTimeline].contextKeyframe = keyframe;
         return [CocosBuilderAppDelegate appDelegate].menuContextKeyframe;
     }
     
-    NSOutlineView* outlineView = [SequencerHandler sharedHandler].outlineHierarchy;
+    NSOutlineView* outlineView = [self getHandlerOutlineView];
     
     id item = [outlineView itemAtRow:row];
     if ([item isKindOfClass:[SequencerChannel class]])
@@ -896,6 +923,7 @@
     if (keyframe && [keyframe supportsFiniteTimeInterpolations])
     {
         [SequencerHandler sharedHandler].contextKeyframe = keyframe;
+        [SequencerHandlerTimeline sharedHandlerTimeline].contextKeyframe = keyframe;
         
         // Highlight selected option in context menu
         NSMenu* menu = [CocosBuilderAppDelegate appDelegate].menuContextKeyframeInterpol;

@@ -78,8 +78,10 @@ enum
     NSPoint mouseDownPosition;
     int mouseDownRelPositionX;
     BOOL didAutoScroll;
+    BOOL isForMainHandler;
 }
 
 @property (nonatomic,retain) NSEvent* lastDragEvent;
+@property (nonatomic,readwrite) BOOL isForMainHandler;
 
 @end

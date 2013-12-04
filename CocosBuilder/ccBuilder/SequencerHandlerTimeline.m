@@ -18,6 +18,9 @@
 #import "SequencerExpandBtnCell.h"
 #import "SequencerCell.h"
 #import "SequencerStructureCell.h"
+#import "SequencerKeyframe.h"
+#import "SequencerKeyframeEasing.h"
+#import "CCBDocument.h"
 
 static SequencerHandlerTimeline *sharedSequencerHandlerTimeline = nil;
 
@@ -28,6 +31,7 @@ static SequencerHandlerTimeline *sharedSequencerHandlerTimeline = nil;
 @synthesize scroller;
 @synthesize currentSequence;
 @synthesize scrubberSelectionView;
+@synthesize contextKeyframe;
 
 + (SequencerHandlerTimeline *) sharedHandlerTimeline
 {
@@ -51,6 +55,8 @@ static SequencerHandlerTimeline *sharedSequencerHandlerTimeline = nil;
     
     return self;
 }
+
+#pragma mark Handle scroller
 
 - (void) redrawTimeline:(BOOL) reload
 {
@@ -124,8 +130,6 @@ static SequencerHandlerTimeline *sharedSequencerHandlerTimeline = nil;
 {
     [self updatePropertiesToTimelinePositionForNode:[[CocosScene cocosScene] rootNode] sequenceId:currentSequence.sequenceId localTime:currentSequence.timelinePosition];
 }
-
-#pragma mark Handle scroller
 
 - (void) setScroller:(NSScroller *)s
 {
@@ -257,6 +261,7 @@ static SequencerHandlerTimeline *sharedSequencerHandlerTimeline = nil;
     }
     
     CCNode* node = item;
+    node.seqExpanded = YES;
     return node.displayName;
 }
 
@@ -289,14 +294,17 @@ static SequencerHandlerTimeline *sharedSequencerHandlerTimeline = nil;
 - (CGFloat) outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(id)item
 {
     CCNode* node = item;
-    if (node.seqExpanded)
-    {
-        return kCCBSeqDefaultRowHeight * ([[node.plugIn animatablePropertiesForNode:node] count]);
-    }
-    else
-    {
-        return kCCBSeqDefaultRowHeight;
-    }
+    return kCCBSeqDefaultRowHeight * ([[node.plugIn animatablePropertiesForNode:node] count]);
+        
+//    CCNode* node = item;
+//    if (node.seqExpanded)
+//    {
+//        return kCCBSeqDefaultRowHeight * ([[node.plugIn animatablePropertiesForNode:node] count]);
+//    }
+//    else
+//    {
+//        return kCCBSeqDefaultRowHeight;
+//    }
 }
 
 #pragma mark Outline View
@@ -310,7 +318,8 @@ static SequencerHandlerTimeline *sharedSequencerHandlerTimeline = nil;
     if (node == [CocosScene cocosScene].rootNode && !node.seqExpanded) return;
     //if ([NSStringFromClass(node.class) isEqualToString:@"CCBPCCBFile"] && !node.seqExpanded) return;
     
-    node.seqExpanded = !node.seqExpanded;
+    //node.seqExpanded = !node.seqExpanded;
+    node.seqExpanded = YES;
     
     // Need to reload all data when changing heights of rows
     [outlineTimeline reloadData];
