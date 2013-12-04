@@ -163,8 +163,17 @@
     // Check min value
     if (to < 0) to = 0;
     
+    float maxOffset = [[SequencerHandlerTimeline sharedHandlerTimeline] maxTimelineOffset];
+    if (to > maxOffset) to = maxOffset;
+    
+    if (timelineOffset != to)
+    {
+        timelineOffset = to;
+        [[SequencerHandlerTimeline sharedHandlerTimeline] redrawTimeline:NO];
+    }
+    
     // Check max value
-    float maxOffset = [[SequencerHandler sharedHandler] maxTimelineOffset];
+    maxOffset = [[SequencerHandler sharedHandler] maxTimelineOffset];
     if (to > maxOffset) to = maxOffset;
     
     // Update offset
@@ -172,7 +181,6 @@
     {
         timelineOffset = to;
         [[SequencerHandler sharedHandler] redrawTimeline:NO];
-        [[SequencerHandlerTimeline sharedHandlerTimeline] redrawTimeline:NO];
     }
 }
 
