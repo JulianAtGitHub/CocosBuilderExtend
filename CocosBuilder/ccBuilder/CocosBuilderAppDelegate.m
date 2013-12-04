@@ -843,15 +843,27 @@ static BOOL hideAllToNextSeparator;
         lblTimelineChained.stringValue = @"";
         [menuTimelinePopup setEnabled:NO];
         [menuTimelineChainedPopup setEnabled:NO];
+        
+        lblTimelineStructure.stringValue = @"";
+        lblTimelineChainedStructure.stringValue = @"";
+        [menuTimelinePopupStructure setEnabled:NO];
+        [menuTimelineChainedPopupStructure setEnabled:NO];
+        
         return;
     }
     
     [menuTimelinePopup setEnabled:YES];
     [menuTimelineChainedPopup setEnabled:YES];
     
+    [menuTimelinePopupStructure setEnabled:YES];
+    [menuTimelineChainedPopupStructure setEnabled:YES];
+    
     // Clear menu
     [menuTimeline removeAllItems];
     [menuTimelineChained removeAllItems];
+    
+    [menuTimelineStructure removeAllItems];
+    [menuTimelineChainedStructure removeAllItems];
     
     int currentId = sequenceHandler.currentSequence.sequenceId;
     int chainedId = sequenceHandler.currentSequence.chainedSequenceId;
@@ -860,6 +872,9 @@ static BOOL hideAllToNextSeparator;
     NSMenuItem* itemDummy = [[[NSMenuItem alloc] initWithTitle:@"Dummy" action:NULL keyEquivalent:@""] autorelease];
     [menuTimelineChained addItem:itemDummy];
     
+    itemDummy = [[[NSMenuItem alloc] initWithTitle:@"Dummy" action:NULL keyEquivalent:@""] autorelease];
+    [menuTimelineChainedStructure addItem:itemDummy];
+    
     // Add empty option for chained seq
     NSMenuItem* itemCh = [[[NSMenuItem alloc] initWithTitle: @"No Chained Timeline" action:@selector(menuSetChainedSequence:) keyEquivalent:@""] autorelease];
     itemCh.target = sequenceHandler;
@@ -867,8 +882,15 @@ static BOOL hideAllToNextSeparator;
     if (chainedId == -1) [itemCh setState:NSOnState];
     [menuTimelineChained addItem:itemCh];
     
+    itemCh = [[[NSMenuItem alloc] initWithTitle: @"No Chained Timeline" action:@selector(menuSetChainedSequence:) keyEquivalent:@""] autorelease];
+    itemCh.target = sequenceHandler;
+    itemCh.tag = -1;
+    if (chainedId == -1) [itemCh setState:NSOnState];
+    [menuTimelineChainedStructure addItem:itemCh];
+    
     // Add separator item
     [menuTimelineChained addItem:[NSMenuItem separatorItem]];
+    [menuTimelineChainedStructure addItem:[NSMenuItem separatorItem]];
     
     for (SequencerSequence* seq in currentDocument.sequences)
     {
@@ -879,18 +901,32 @@ static BOOL hideAllToNextSeparator;
         if (currentId == seq.sequenceId) [item setState:NSOnState];
         [menuTimeline addItem:item];
         
+        item = [[[NSMenuItem alloc] initWithTitle:seq.name action:@selector(menuSetSequence:) keyEquivalent:@""] autorelease];
+        item.target = sequenceHandler;
+        item.tag = seq.sequenceId;
+        if (currentId == seq.sequenceId) [item setState:NSOnState];
+        [menuTimelineStructure addItem:item];
+        
         // Add to chained sequence selector
         itemCh = [[[NSMenuItem alloc] initWithTitle: seq.name action:@selector(menuSetChainedSequence:) keyEquivalent:@""] autorelease];
         itemCh.target = sequenceHandler;
         itemCh.tag = seq.sequenceId;
         if (chainedId == seq.sequenceId) [itemCh setState:NSOnState];
         [menuTimelineChained addItem:itemCh];
+        
+        itemCh = [[[NSMenuItem alloc] initWithTitle: seq.name action:@selector(menuSetChainedSequence:) keyEquivalent:@""] autorelease];
+        itemCh.target = sequenceHandler;
+        itemCh.tag = seq.sequenceId;
+        if (chainedId == seq.sequenceId) [itemCh setState:NSOnState];
+        [menuTimelineChainedStructure addItem:itemCh];
     }
     
     lblTimeline.stringValue = sequenceHandler.currentSequence.name;
+    lblTimelineStructure.stringValue = sequenceHandler.currentSequence.name;
     if (chainedId == -1)
     {
         lblTimelineChained.stringValue = @"No chained timeline";
+        lblTimelineChainedStructure.stringValue = @"No chained timeline";
     }
     else
     {
@@ -899,10 +935,14 @@ static BOOL hideAllToNextSeparator;
             if (seq.sequenceId == chainedId)
             {
                 lblTimelineChained.stringValue = seq.name;
+                lblTimelineChainedStructure.stringValue = seq.name;
                 break;
             }
         }
     }
+    
+    [sequencerHandlerTimeline redrawTimeline];
+    [sequencerHandlerTimeline updatePropertiesToTimelinePosition];
 }
 
 #pragma mark Document handling
@@ -3721,6 +3761,7 @@ static BOOL hideAllToNextSeparator;
     if (!self.hasOpenedDocument) return;
     sequenceHandler.currentSequence.timelinePosition = 0;
     [[SequencerHandler sharedHandler] updateScrollerToShowCurrentTime];
+    [[SequencerHandlerTimeline sharedHandlerTimeline] updateScrollerToShowCurrentTime];
 }
 
 - (IBAction)playbackStepBack:(id)sender

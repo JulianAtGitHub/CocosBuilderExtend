@@ -1121,7 +1121,7 @@ CA
                                 </connections>
                             </segmentedControl>
                             <tabView type="noTabsNoBorder" initialItem="EYP-Hh-vMY" id="mU6-sD-iVn">
-                                <rect key="frame" x="0.0" y="16" width="255" height="640"/>
+                                <rect key="frame" x="0.0" y="16" width="255" height="641"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
@@ -1195,18 +1195,86 @@ CA
                                     </tabViewItem>
                                     <tabViewItem label="Structure" identifier="2" id="SYR-Ij-MmW">
                                         <view key="view" id="tnE-Je-5LA">
-                                            <rect key="frame" x="0.0" y="0.0" width="255" height="640"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="255" height="641"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
+                                                <imageView id="Ou0-d5-FGJ">
+                                                    <rect key="frame" x="0.0" y="625" width="255" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="topLeft" imageScaling="axesIndependently" image="header-bg" id="p9n-oq-QeE"/>
+                                                </imageView>
+                                                <textField verticalHuggingPriority="750" id="fmM-Xt-Vce">
+                                                    <rect key="frame" x="8" y="627" width="240" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Structure" id="HlQ-Iu-gyo">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <imageView id="8cf-JW-mGy">
+                                                    <rect key="frame" x="231" y="629" width="16" height="9"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="btn-dropdown-arrows" id="XbM-pK-zRy"/>
+                                                </imageView>
+                                                <popUpButton verticalHuggingPriority="750" id="uv1-FQ-M6m">
+                                                    <rect key="frame" x="0.0" y="626" width="255" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <popUpButtonCell key="cell" type="smallSquare" bezelStyle="smallSquare" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" transparent="YES" inset="2" pullsDown="YES" id="VWf-mu-xyH">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="menu"/>
+                                                        <menu key="menu" title="OtherViews" id="gBi-ac-3Rc">
+                                                            <items>
+                                                                <menuItem isSeparatorItem="YES" hidden="YES" id="jHI-KQ-MbY"/>
+                                                                <menuItem title="Timelines" id="MDo-is-1i5">
+                                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <menu key="submenu" title="Timelines" id="iSh-KW-q1y">
+                                                                        <items>
+                                                                            <menuItem title="Item" id="oeP-Na-DZR">
+                                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                </menuItem>
+                                                                <menuItem isSeparatorItem="YES" id="tKH-d0-uDT"/>
+                                                                <menuItem title="Edit Timelines..." id="G5n-ex-06f">
+                                                                    <connections>
+                                                                        <action selector="menuTimelineSettings:" target="494" id="ijM-oU-z8W"/>
+                                                                    </connections>
+                                                                </menuItem>
+                                                                <menuItem isSeparatorItem="YES" id="aee-qk-xtY"/>
+                                                                <menuItem title="New Timeline" id="XrJ-oh-KB0">
+                                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <connections>
+                                                                        <action selector="menuTimelineNew:" target="494" id="FJk-wR-QhQ"/>
+                                                                    </connections>
+                                                                </menuItem>
+                                                                <menuItem title="Duplicate Timeline" id="SRK-s8-25M">
+                                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <connections>
+                                                                        <action selector="menuTimelineDuplicate:" target="494" id="hRY-h5-iI2"/>
+                                                                    </connections>
+                                                                </menuItem>
+                                                                <menuItem isSeparatorItem="YES" id="ksb-WM-vIp"/>
+                                                                <menuItem title="Set Timeline Duration..." id="na1-87-Efk">
+                                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <connections>
+                                                                        <action selector="menuTimelineDuration:" target="494" id="T21-3C-hNn"/>
+                                                                    </connections>
+                                                                </menuItem>
+                                                            </items>
+                                                        </menu>
+                                                    </popUpButtonCell>
+                                                </popUpButton>
                                                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="16" horizontalPageScroll="10" verticalLineScroll="16" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" id="zu1-jt-HtQ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="255" height="640"/>
+                                                    <rect key="frame" x="0.0" y="17" width="255" height="607"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                                     <clipView key="contentView" copiesOnScroll="NO" id="hRE-xF-oSN">
-                                                        <rect key="frame" x="0.0" y="0.0" width="255" height="640"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="255" height="607"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" autosaveColumns="NO" rowHeight="14" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="zSn-Hs-brs" id="Tge-5z-EV6" customClass="SequencerOutlineView">
-                                                                <rect key="frame" x="0.0" y="0.0" width="255" height="640"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="255" height="607"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <size key="intercellSpacing" width="0.0" height="2"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1239,6 +1307,50 @@ CA
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                 </scrollView>
+                                                <imageView id="2of-8B-jpH">
+                                                    <rect key="frame" x="4" y="4" width="8" height="9"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="seq-next-seq" id="yMK-SM-GG4"/>
+                                                </imageView>
+                                                <textField verticalHuggingPriority="750" id="Jh1-JT-a8U">
+                                                    <rect key="frame" x="16" y="2" width="220" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="No chained timeline" id="CWA-5H-7OU">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <imageView id="gef-eH-qu5">
+                                                    <rect key="frame" x="231" y="4" width="16" height="9"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="btn-dropdown-arrows" id="7Qe-cT-wHg"/>
+                                                </imageView>
+                                                <popUpButton verticalHuggingPriority="750" id="M6C-Lq-LFf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="255" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <popUpButtonCell key="cell" type="smallSquare" title="No Chained Sequence" bezelStyle="smallSquare" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" transparent="YES" inset="2" pullsDown="YES" selectedItem="DMj-wr-gMO" id="PKO-Al-Mci">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="menu"/>
+                                                        <menu key="menu" title="OtherViews" id="lC5-Bd-fYn">
+                                                            <items>
+                                                                <menuItem title="No Chained Sequence" hidden="YES" id="DMj-wr-gMO">
+                                                                    <connections>
+                                                                        <action selector="menuTimelineSettings:" target="494" id="0EP-I7-KZu"/>
+                                                                    </connections>
+                                                                </menuItem>
+                                                                <menuItem isSeparatorItem="YES" id="Bh7-v1-Pzv"/>
+                                                            </items>
+                                                        </menu>
+                                                    </popUpButtonCell>
+                                                </popUpButton>
+                                                <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="cr0-ek-EFK">
+                                                    <rect key="frame" x="0.0" y="15" width="255" height="5"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <font key="titleFont" metaFont="system"/>
+                                                </box>
                                             </subviews>
                                         </view>
                                     </tabViewItem>
@@ -1608,7 +1720,7 @@ CA
                                                         <popUpButton verticalHuggingPriority="750" id="1573">
                                                             <rect key="frame" x="0.0" y="124" width="250" height="15"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                            <popUpButtonCell key="cell" type="smallSquare" bezelStyle="smallSquare" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" transparent="YES" inset="2" pullsDown="YES" selectedItem="TDe-ni-Ccv" id="1574">
+                                                            <popUpButtonCell key="cell" type="smallSquare" bezelStyle="smallSquare" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" transparent="YES" inset="2" pullsDown="YES" selectedItem="1580" id="1574">
                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                 <font key="font" metaFont="menu"/>
                                                                 <menu key="menu" title="OtherViews" id="1575">
@@ -1657,7 +1769,7 @@ CA
                                                         <popUpButton verticalHuggingPriority="750" id="1668">
                                                             <rect key="frame" x="0.0" y="0.0" width="250" height="15"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <popUpButtonCell key="cell" type="smallSquare" title="No Chained Sequence" bezelStyle="smallSquare" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" transparent="YES" inset="2" pullsDown="YES" selectedItem="1678" id="1669">
+                                                            <popUpButtonCell key="cell" type="smallSquare" title="No Chained Sequence" bezelStyle="smallSquare" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" transparent="YES" inset="2" pullsDown="YES" id="1669">
                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                 <font key="font" metaFont="menu"/>
                                                                 <menu key="menu" title="OtherViews" id="1670">
@@ -1931,6 +2043,8 @@ CA
                 <outlet property="inspectorScroll" destination="605" id="1039"/>
                 <outlet property="lblTimeline" destination="1237" id="1586"/>
                 <outlet property="lblTimelineChained" destination="1666" id="1687"/>
+                <outlet property="lblTimelineChainedStructure" destination="Jh1-JT-a8U" id="h7J-dy-JfG"/>
+                <outlet property="lblTimelineStructure" destination="fmM-Xt-Vce" id="2MT-lH-d9J"/>
                 <outlet property="leftPanel" destination="1491" id="1790"/>
                 <outlet property="mainView" destination="372" id="1262"/>
                 <outlet property="menuCanvasBorder" destination="1276" id="1293"/>
@@ -1946,7 +2060,11 @@ CA
                 <outlet property="menuTimeline" destination="1581" id="1585"/>
                 <outlet property="menuTimelineChained" destination="1670" id="1685"/>
                 <outlet property="menuTimelineChainedPopup" destination="1668" id="1686"/>
+                <outlet property="menuTimelineChainedPopupStructure" destination="M6C-Lq-LFf" id="94A-Bq-4js"/>
+                <outlet property="menuTimelineChainedStructure" destination="lC5-Bd-fYn" id="Dcp-15-GUG"/>
                 <outlet property="menuTimelinePopup" destination="1573" id="1588"/>
+                <outlet property="menuTimelinePopupStructure" destination="uv1-FQ-M6m" id="A4I-hJ-haz"/>
+                <outlet property="menuTimelineStructure" destination="iSh-KW-q1y" id="3Dp-zr-9pT"/>
                 <outlet property="navigateTabView" destination="mU6-sD-iVn" id="e8t-Vl-NiM"/>
                 <outlet property="outlineHierarchy" destination="570" id="1040"/>
                 <outlet property="outlineProject" destination="1499" id="1504"/>

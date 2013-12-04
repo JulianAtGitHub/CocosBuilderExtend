@@ -261,6 +261,7 @@
     // Update timeline
     self.timelinePosition = newTime;
     [[SequencerHandler sharedHandler] updateScrollerToShowCurrentTime];
+    [[SequencerHandlerTimeline sharedHandlerTimeline] updateScrollerToShowCurrentTime];
 }
 
 - (void) stepBack:(int)numSteps
@@ -268,6 +269,7 @@
     float newTime = [self alignTimeToResolution: timelinePosition - numSteps/timelineResolution];
     self.timelinePosition = newTime;
     [[SequencerHandler sharedHandler] updateScrollerToShowCurrentTime];
+    [[SequencerHandlerTimeline sharedHandlerTimeline] updateScrollerToShowCurrentTime];
 }
 
 - (SequencerSequence*) duplicateWithNewId:(int)seqId
