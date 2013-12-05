@@ -28,7 +28,17 @@
 		</dict>
 		<dict>
 			<key>defaultSerialization</key>
-			<integer>10</integer>
+			<true/>
+			<key>type</key>
+			<string>Check</string>
+			<key>name</key>
+			<string>indicatorVisible</string>
+			<key>displayName</key>
+			<string>Visible Indicator</string>
+		</dict>
+		<dict>
+			<key>defaultSerialization</key>
+			<integer>1</integer>
 			<key>displayName</key>
 			<string>Length</string>
 			<key>type</key>

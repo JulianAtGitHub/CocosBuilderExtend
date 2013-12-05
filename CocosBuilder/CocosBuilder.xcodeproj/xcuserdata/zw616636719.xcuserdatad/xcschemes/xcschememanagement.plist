@@ -19,6 +19,11 @@
 			<key>orderHint</key>
 			<integer>14</integer>
 		</dict>
+		<key>CCJoint.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>21</integer>
+		</dict>
 		<key>CCLabelBMFont.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -97,6 +102,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>62CB60C51850691A001B2600</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>7789ABBD133AA82000CEFCC7</key>
 		<dict>
 			<key>primary</key>

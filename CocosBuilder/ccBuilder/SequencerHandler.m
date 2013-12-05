@@ -44,6 +44,7 @@
 #import "CCBPCCBFile.h"
 #import "SequencerCallbackChannel.h"
 #import "SequencerSoundChannel.h"
+#import "SequencerHandlerTimeline.h"
 #import <objc/runtime.h>
 
 static SequencerHandler* sharedSequencerHandler = nil;
@@ -83,7 +84,7 @@ static SequencerHandler* sharedSequencerHandler = nil;
     
     [outlineHierarchy registerForDraggedTypes:[NSArray arrayWithObjects: @"com.cocosbuilder.node", @"com.cocosbuilder.texture", @"com.cocosbuilder.template", @"com.cocosbuilder.ccb", nil]];
     
-//    [[[outlineHierarchy outlineTableColumn] dataCell] setEditable:YES];
+    [[[outlineHierarchy outlineTableColumn] dataCell] setEditable:YES];
     
     return self;
 }
@@ -378,16 +379,16 @@ static SequencerHandler* sharedSequencerHandler = nil;
     return node.displayName;
 }
 
-//- (void) outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
-//{
-//    CCNode* node = item;
-//    
-//    if (![object isEqualToString:node.displayName])
-//    {
-//        [[CocosBuilderAppDelegate appDelegate] saveUndoStateWillChangeProperty:@"*nodeDisplayName"];
-//        node.displayName = object;
-//    }
-//}
+- (void) outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
+{
+    CCNode* node = item;
+    
+    if (![object isEqualToString:node.displayName])
+    {
+        [[CocosBuilderAppDelegate appDelegate] saveUndoStateWillChangeProperty:@"*nodeDisplayName"];
+        node.displayName = object;
+    }
+}
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView writeItems:(NSArray *)items toPasteboard:(NSPasteboard *)pboard
 {
@@ -825,6 +826,7 @@ static SequencerHandler* sharedSequencerHandler = nil;
     }
     
     self.currentSequence = seqSet;
+    [SequencerHandlerTimeline sharedHandlerTimeline].currentSequence = seqSet;
 }
 
 - (void) menuSetChainedSequence:(id)sender

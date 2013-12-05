@@ -46,6 +46,8 @@ static SequencerHandlerStructure *sharedSequencerHandlerStructure = nil;
     
     [outlineStructure registerForDraggedTypes:[NSArray arrayWithObjects: @"com.cocosbuilder.node", @"com.cocosbuilder.texture", @"com.cocosbuilder.template", @"com.cocosbuilder.ccb", nil]];
     
+    [[[outlineStructure outlineTableColumn] dataCell] setEditable:YES];
+    
     return self;
 }
 
@@ -143,12 +145,24 @@ static SequencerHandlerStructure *sharedSequencerHandlerStructure = nil;
     
     return YES;
 }
+
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
 {
     if (item == nil) return @"Root";
     
     CCNode* node = item;
     return node.displayName;
+}
+
+- (void) outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
+{
+    CCNode* node = item;
+    
+    if (![object isEqualToString:node.displayName])
+    {
+        [[CocosBuilderAppDelegate appDelegate] saveUndoStateWillChangeProperty:@"*nodeDisplayName"];
+        node.displayName = object;
+    }
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView writeItems:(NSArray *)items toPasteboard:(NSPasteboard *)pboard
