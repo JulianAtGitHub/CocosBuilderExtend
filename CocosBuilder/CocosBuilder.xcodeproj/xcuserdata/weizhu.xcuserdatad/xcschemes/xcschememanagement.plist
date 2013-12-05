@@ -19,6 +19,11 @@
 			<key>orderHint</key>
 			<integer>14</integer>
 		</dict>
+		<key>CCJoint.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>16</integer>
+		</dict>
 		<key>CCLabelBMFont.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -87,16 +92,21 @@
 		<key>CocosBuilder.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>16</integer>
+			<integer>17</integer>
 		</dict>
 		<key>ccbpublish.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>17</integer>
+			<integer>18</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>62CB60C51850691A001B2600</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>7789ABBD133AA82000CEFCC7</key>
 		<dict>
 			<key>primary</key>
