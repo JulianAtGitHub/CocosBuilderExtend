@@ -25,6 +25,7 @@
 #import <Foundation/Foundation.h>
 
 #define TIMELINE_PAD_PIXELS 5.0f
+#define INVAILD_SEQUENCE_ID -1
 
 @class SequencerSettingsWindow;
 @class SequencerCallbackChannel;

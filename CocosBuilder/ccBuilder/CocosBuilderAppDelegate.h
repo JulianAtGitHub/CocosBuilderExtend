@@ -73,6 +73,12 @@ enum {
     kCCBArrangeSendToBack,
 };
 
+enum {
+    kCCBAnimationPlayModeOnce,
+    kCCBAnimationPlayModeSequential,
+    kCCBAnimationPlayModeRepeat,
+};
+
 
 @class CCBDocument;
 @class ProjectSettings;
@@ -249,6 +255,7 @@ enum {
     // Animation playback
     BOOL playingBack;
     double playbackLastFrameTime;
+    NSInteger playMode;
     
     // JavaScript bindings
     BOOL jsControlled;

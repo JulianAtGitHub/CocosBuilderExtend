@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2545F349184A06DE0012CFD8 /* SequencerHandlerStructure.m in Sources */ = {isa = PBXBuildFile; fileRef = 2545F345184A06C90012CFD8 /* SequencerHandlerStructure.m */; };
+		255DD6ED1851CDDA00E9DCF0 /* seq-btn-oneByOne.png in Resources */ = {isa = PBXBuildFile; fileRef = 255DD6EB1851CDDA00E9DCF0 /* seq-btn-oneByOne.png */; };
+		255DD6EE1851CDDA00E9DCF0 /* seq-btn-repeat.png in Resources */ = {isa = PBXBuildFile; fileRef = 255DD6EC1851CDDA00E9DCF0 /* seq-btn-repeat.png */; };
+		255DD6F21851CE8700E9DCF0 /* seq-btn-once.png in Resources */ = {isa = PBXBuildFile; fileRef = 255DD6F11851CE8700E9DCF0 /* seq-btn-once.png */; };
 		581130601639C52500A86D70 /* seq-startmarker.png in Resources */ = {isa = PBXBuildFile; fileRef = 5811305F1639C52000A86D70 /* seq-startmarker.png */; };
 		581BCFE8162DADE7007DE600 /* CCBSplitHorizontalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 581BCFE7162DADE7007DE600 /* CCBSplitHorizontalView.m */; };
 		58FA2034162D73F3006B8856 /* TB_bottomPanel.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FA2031162D73F3006B8856 /* TB_bottomPanel.png */; };
@@ -878,6 +881,9 @@
 /* Begin PBXFileReference section */
 		2545F344184A06C90012CFD8 /* SequencerHandlerStructure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SequencerHandlerStructure.h; sourceTree = "<group>"; };
 		2545F345184A06C90012CFD8 /* SequencerHandlerStructure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SequencerHandlerStructure.m; sourceTree = "<group>"; };
+		255DD6EB1851CDDA00E9DCF0 /* seq-btn-oneByOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seq-btn-oneByOne.png"; sourceTree = "<group>"; };
+		255DD6EC1851CDDA00E9DCF0 /* seq-btn-repeat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seq-btn-repeat.png"; sourceTree = "<group>"; };
+		255DD6F11851CE8700E9DCF0 /* seq-btn-once.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seq-btn-once.png"; sourceTree = "<group>"; };
 		5811305E1639BF1200A86D70 /* SequencerTimelineDrawDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SequencerTimelineDrawDelegate.h; sourceTree = "<group>"; };
 		5811305F1639C52000A86D70 /* seq-startmarker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seq-startmarker.png"; sourceTree = "<group>"; };
 		581BCFE6162DADE7007DE600 /* CCBSplitHorizontalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBSplitHorizontalView.h; sourceTree = "<group>"; };
@@ -2387,6 +2393,9 @@
 		776041F01498FD630078095D /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				255DD6F11851CE8700E9DCF0 /* seq-btn-once.png */,
+				255DD6EB1851CDDA00E9DCF0 /* seq-btn-oneByOne.png */,
+				255DD6EC1851CDDA00E9DCF0 /* seq-btn-repeat.png */,
 				62B2B3D1184D86D900B9F46D /* seq-btn-node.png */,
 				62B2B3D2184D86D900B9F46D /* seq-btn-tree.png */,
 				E37FCAEC175D2704009F81D6 /* ui-cogs.png */,
@@ -4662,6 +4671,7 @@
 				E3B4221314E4A350004547D6 /* InspectorCheck.xib in Resources */,
 				E3B4221814E4BE6B004547D6 /* InspectorSpriteFrame.xib in Resources */,
 				E3B4221D14E58C35004547D6 /* InspectorByte.xib in Resources */,
+				255DD6F21851CE8700E9DCF0 /* seq-btn-once.png in Resources */,
 				E3B4222214E58FEE004547D6 /* InspectorColor3.xib in Resources */,
 				E3B4222714E5992F004547D6 /* InspectorFlip.xib in Resources */,
 				E3B4222C14E5A828004547D6 /* InspectorBlendmode.xib in Resources */,
@@ -4770,6 +4780,7 @@
 				E326EFB615C84123006D6CE6 /* seq-endmarker.png in Resources */,
 				E33C2AB515CAE2590043EF9B /* SequencerStretchWindow.xib in Resources */,
 				E33C2ABA15CBF2580043EF9B /* seq-keyframe-hint.png in Resources */,
+				255DD6ED1851CDDA00E9DCF0 /* seq-btn-oneByOne.png in Resources */,
 				E3214C4115D3BF4D002413A7 /* CustomPropSettingsWindow.xib in Resources */,
 				E3214C4C15D40F01002413A7 /* InspectorCustom.xib in Resources */,
 				E3214C5E15D54356002413A7 /* InspectorCustomEdit.xib in Resources */,
@@ -4794,6 +4805,7 @@
 				E3808DB41641C45B00398456 /* PublishSettingsWindow.xib in Resources */,
 				E38DAB22165AC18800EA24E4 /* reshandler-spritesheet-folder.png in Resources */,
 				E3618D58166562DA009F5805 /* publishTemplates in Resources */,
+				255DD6EE1851CDDA00E9DCF0 /* seq-btn-repeat.png in Resources */,
 				E3D71E4B1669410800D9E638 /* defaultProjectResources in Resources */,
 				E3366A39168159F30094BD94 /* PVRTexToolCL in Resources */,
 				E35D78D616826C0100A53BEF /* SpriteSheetSettingsWindow.xib in Resources */,

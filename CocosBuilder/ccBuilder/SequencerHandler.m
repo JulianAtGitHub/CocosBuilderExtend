@@ -654,7 +654,7 @@ static SequencerHandler* sharedSequencerHandler = nil;
     {
         if (seq.chainedSequenceId == seqId)
         {
-            seq.chainedSequenceId = -1;
+            seq.chainedSequenceId = INVAILD_SEQUENCE_ID;
         }
     }
     
@@ -774,12 +774,12 @@ static SequencerHandler* sharedSequencerHandler = nil;
         NSArray* childSequences = [child extraPropForKey:@"*sequences"];
         int childStartSequence = [[child extraPropForKey:@"*startSequence"] intValue];
         
-        if (childSequences && childStartSequence != -1)
+        if (childSequences && childStartSequence != INVAILD_SEQUENCE_ID)
         {
             childSeqId = childStartSequence;
             SequencerSequence* seq = [self seqId:childSeqId inArray:childSequences];
             
-            while (localTime > seq.timelineLength && seq.chainedSequenceId != -1)
+            while (localTime > seq.timelineLength && seq.chainedSequenceId != INVAILD_SEQUENCE_ID)
             {
                 localTime -= seq.timelineLength;
                 seq = [self seqId:seq.chainedSequenceId inArray:childSequences];

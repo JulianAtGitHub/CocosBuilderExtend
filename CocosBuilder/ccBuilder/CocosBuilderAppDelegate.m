@@ -3706,7 +3706,34 @@ static BOOL hideAllToNextSeparator;
         
         if (sequenceHandler.currentSequence.timelinePosition >= sequenceHandler.currentSequence.timelineLength)
         {
-            [self playbackStop:NULL];
+            if (playMode == kCCBAnimationPlayModeOnce) {
+                [self playbackStop:NULL];
+            } else if (playMode == kCCBAnimationPlayModeSequential) {
+                if (sequenceHandler.currentSequence.chainedSequenceId != INVAILD_SEQUENCE_ID) {
+                    NSMenuItem *chainedItem = nil;
+                    for (NSMenuItem *item in [menuTimeline itemArray]) {
+                        if (item.tag == sequenceHandler.currentSequence.chainedSequenceId) {
+                            chainedItem = item;
+                            break;
+                        }
+                    }
+                    if (chainedItem) {
+                        [sequenceHandler menuSetSequence:chainedItem];
+                        [self playbackStop:nil];
+                        [self playbackJumpToStart:nil];
+                        [self playbackPlay:nil];
+                    } else {
+                        [self playbackStop:NULL];
+                    }
+                } else {
+                    [self playbackStop:NULL];
+                }
+            } else if (playMode == kCCBAnimationPlayModeRepeat) {
+                [self playbackStop:nil];
+                [self playbackJumpToStart:nil];
+                [self playbackPlay:nil];
+            }
+            
         }
         else
         {
@@ -3792,6 +3819,13 @@ static BOOL hideAllToNextSeparator;
     }
 }
 
+- (IBAction)segmentPlayModeSelectChanged:(id)sender
+{
+    playMode = [sender selectedSegment];
+    [self playbackStop:nil];
+    [self playbackJumpToStart:nil];
+}
+
 #pragma mark Delegate methods
 
 - (BOOL) windowShouldClose:(id)sender
@@ -3874,7 +3908,6 @@ static BOOL hideAllToNextSeparator;
     [timelineTabView selectTabViewItemAtIndex:[sender selectedSegment]];
     selectTimelineTab = [sender selectedSegment];
 }
-
 
 #pragma mark Debug
 

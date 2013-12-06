@@ -62,8 +62,8 @@
     timelineResolution = 30;
     timelineLength = 10;
     self.name = @"Untitled Timeline";
-    sequenceId = -1;
-    chainedSequenceId = -1;
+    sequenceId = INVAILD_SEQUENCE_ID;
+    chainedSequenceId = INVAILD_SEQUENCE_ID;
     timelinePosition = 0;
     
     callbackChannel = [[SequencerCallbackChannel alloc] init];
@@ -86,7 +86,7 @@
     sequenceId = [[ser objectForKey:@"sequenceId"] intValue];
     NSNumber* chainedSeqIdNum = [ser objectForKey:@"chainedSequenceId"];
     if (chainedSeqIdNum) chainedSequenceId = [chainedSeqIdNum intValue];
-    else chainedSequenceId = -1;
+    else chainedSequenceId = INVAILD_SEQUENCE_ID;
     autoPlay = [[ser objectForKey:@"autoPlay"] boolValue];
     
     id serCallbacks = [ser objectForKey:@"callbackChannel"];

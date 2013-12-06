@@ -1453,7 +1453,7 @@ CA
                                         </connections>
                                     </segmentedControl>
                                     <segmentedControl verticalHuggingPriority="750" id="1559">
-                                        <rect key="frame" x="250" y="166" width="32" height="25"/>
+                                        <rect key="frame" x="362" y="166" width="32" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <segmentedCell key="cell" alignment="left" style="texturedSquare" trackingMode="momentary" id="1560">
                                             <font key="font" metaFont="system"/>
@@ -1491,6 +1491,27 @@ CA
                                             <action selector="segmentTimeLineSelectChanged:" target="494" id="RpR-cw-9hb"/>
                                         </connections>
                                     </segmentedControl>
+                                    <segmentedControl verticalHuggingPriority="750" id="T84-Ao-5Ok">
+                                        <rect key="frame" x="250" y="166" width="104" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <segmentedCell key="cell" alignment="left" style="texturedRounded" trackingMode="selectOne" id="GQa-RD-Bdw">
+                                            <font key="font" metaFont="system"/>
+                                            <segments>
+                                                <segment image="seq-btn-once" width="32" selected="YES">
+                                                    <nil key="label"/>
+                                                </segment>
+                                                <segment image="seq-btn-oneByOne" width="32" tag="1">
+                                                    <nil key="label"/>
+                                                </segment>
+                                                <segment image="seq-btn-repeat" width="32">
+                                                    <nil key="label"/>
+                                                </segment>
+                                            </segments>
+                                        </segmentedCell>
+                                        <connections>
+                                            <action selector="segmentPlayModeSelectChanged:" target="494" id="Smc-8h-oGB"/>
+                                        </connections>
+                                    </segmentedControl>
                                     <imageView id="1555">
                                         <rect key="frame" x="504" y="165" width="84" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
@@ -1506,7 +1527,7 @@ CA
                                         </textFieldCell>
                                     </textField>
                                     <button id="1597">
-                                        <rect key="frame" x="502" y="161" width="88" height="31"/>
+                                        <rect key="frame" x="505" y="161" width="85" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="1598">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2271,7 +2292,10 @@ CA
         <image name="btn-dropdown-arrows" width="16" height="9"/>
         <image name="header-bg" width="19" height="17"/>
         <image name="seq-btn-node" width="22" height="16"/>
+        <image name="seq-btn-once" width="16" height="16"/>
+        <image name="seq-btn-oneByOne" width="16" height="16"/>
         <image name="seq-btn-play" width="22" height="16"/>
+        <image name="seq-btn-repeat" width="16" height="16"/>
         <image name="seq-btn-restart" width="22" height="16"/>
         <image name="seq-btn-run" width="22" height="16"/>
         <image name="seq-btn-stepback" width="22" height="16"/>
