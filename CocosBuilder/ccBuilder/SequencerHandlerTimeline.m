@@ -262,7 +262,8 @@ static SequencerHandlerTimeline *sharedSequencerHandlerTimeline = nil;
     
     CCNode* node = item;
     node.seqExpanded = YES;
-    return node.displayName;
+//    return node.displayName;
+    return @"";
 }
 
 #pragma mark Outline View Delegate

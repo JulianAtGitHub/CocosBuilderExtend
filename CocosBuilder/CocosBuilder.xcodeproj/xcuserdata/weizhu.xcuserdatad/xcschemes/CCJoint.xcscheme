@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "62CB60C51850691A001B2600"
-               BuildableName = "CCBFile copy.ccbPlugNode"
+               BuildableName = "CCJoint.ccbPlugNode"
                BlueprintName = "CCJoint"
                ReferencedContainer = "container:CocosBuilder.xcodeproj">
             </BuildableReference>
