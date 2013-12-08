@@ -848,6 +848,44 @@
                 [outlineView reloadData];
             }
         }
+        
+        do {
+            // Check that user clicked a row
+            int row = [self yMousePosToRow:mouseLocation.y];
+            if (row < 0) break;
+            
+            SequencerSequence* seq = [self getHandlerCurrentSequence];
+            int subRow = [self yMousePosToSubRow:mouseLocation.y];
+            float timeMin = [seq positionToTime:mouseLocation.x - 3];
+            float timeMax = [seq positionToTime:mouseLocation.x + 3];
+            
+            // Check if a keyframe was clicked
+            SequencerKeyframe* keyframe = [self keyframeForRow:row sub:subRow minTime:timeMin maxTime:timeMax];
+            if (keyframe)
+            {
+                [SequencerHandler sharedHandler].contextKeyframe = keyframe;
+                [SequencerHandlerTimeline sharedHandlerTimeline].contextKeyframe = keyframe;
+                break;
+            }
+            
+            NSOutlineView* outlineView = [self getHandlerOutlineView];
+            
+            id item = [outlineView itemAtRow:row];
+            if ([item isKindOfClass:[SequencerChannel class]])
+            {
+                break;
+            }
+            
+            // Check if an interpolation was clicked
+            keyframe = [self keyframeForInterpolationInRow:row sub:subRow time:[seq positionToTime:mouseLocation.x]];
+            if (keyframe && [keyframe supportsFiniteTimeInterpolations])
+            {
+                [SequencerHandler sharedHandler].contextKeyframe = keyframe;
+                [SequencerHandlerTimeline sharedHandlerTimeline].contextKeyframe = keyframe;
+            }
+            
+        } while (0);
+        
     }
     else if (mouseState == kCCBSeqMouseStateKeyframe)
     {
@@ -864,6 +902,8 @@
             [[SequencerHandlerTimeline sharedHandlerTimeline] redrawTimeline];
             [outlineView reloadData];
         }
+        
+        [SequencerHandlerTimeline sharedHandlerTimeline].contextKeyframe = nil;
     }
     
     // Clean up

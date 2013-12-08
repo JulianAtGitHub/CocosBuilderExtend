@@ -128,6 +128,9 @@
 @synthesize loadedSelectedNodes;
 @synthesize panelVisibilityControl;
 @synthesize connection;
+@synthesize easingSlideValue;
+@synthesize easingSlideValueMax;
+@synthesize easingSlideValueMin;
 
 static CocosBuilderAppDelegate* sharedAppDelegate;
 
@@ -193,6 +196,11 @@ static CocosBuilderAppDelegate* sharedAppDelegate;
     singleScrubberSelectionView.isForMainHandler = NO;
     sequencerHandlerTimeline.scrubberSelectionView = singleScrubberSelectionView;
     sequencerHandlerTimeline.scroller = singleTimelineScroller;
+    sequencerHandlerTimeline.keyframeEasingType = easingTypeText;
+    sequencerHandlerTimeline.keyframeEasingSlide = easingSlide;
+    sequencerHandlerTimeline.keyframeEasingDetailView = easingDetailView;
+    
+    [sequencerHandlerTimeline refreshKeyframeEasingDetail];
     
     selectTimelineTab = 0;
 }
@@ -516,6 +524,7 @@ static CocosBuilderAppDelegate* sharedAppDelegate;
     [sequenceHandler updateOutlineViewSelection];
     [sequencerHandlerStructure updateOutlineViewSelection];
     [sequencerHandlerTimeline redrawTimeline];
+    sequencerHandlerTimeline.contextKeyframe = nil;
     
     // Handle undo/redo
     if (currentDocument) currentDocument.lastEditedProperty = NULL;
@@ -3429,10 +3438,13 @@ static BOOL hideAllToNextSeparator;
 - (IBAction)menuSetEasing:(id)sender
 {
     int easingType = [sender tag];
+    
     [sequenceHandler setContextKeyframeEasingType:easingType];
     [sequenceHandler updatePropertiesToTimelinePosition];
+    
     [sequencerHandlerTimeline redrawTimeline];
     [sequencerHandlerTimeline updatePropertiesToTimelinePosition];
+    [sequencerHandlerTimeline refreshKeyframeEasingDetail];
 }
 
 - (IBAction)menuSetEasingOption:(id)sender
@@ -3907,6 +3919,17 @@ static BOOL hideAllToNextSeparator;
 {
     [timelineTabView selectTabViewItemAtIndex:[sender selectedSegment]];
     selectTimelineTab = [sender selectedSegment];
+}
+
+#pragma mark slide bind setting
+- (void) setEasingSlideValue:(double)value
+{
+    if (easingSlideValue != value) {
+        sequenceHandler.contextKeyframe.easing.options = [NSNumber numberWithFloat:(float)easingSlideValue];
+        [sequenceHandler updatePropertiesToTimelinePosition];
+        [sequencerHandlerTimeline updatePropertiesToTimelinePosition];
+    }
+    easingSlideValue = value;
 }
 
 #pragma mark Debug

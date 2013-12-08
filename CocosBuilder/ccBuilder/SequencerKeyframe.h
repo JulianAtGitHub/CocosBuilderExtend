@@ -78,4 +78,6 @@ enum
 - (BOOL) valueIsEqualTo:(SequencerKeyframe*)keyframe;
 - (BOOL) supportsFiniteTimeInterpolations;
 
+- (NSComparisonResult) compareTime:(id)cmp;
+
 @end

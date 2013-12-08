@@ -198,6 +198,12 @@ enum {
     IBOutlet NSOutlineView *outlineTimeline;
     IBOutlet NSScroller* singleTimelineScroller;
     IBOutlet SequencerScrubberSelectionView* singleScrubberSelectionView;
+    IBOutlet NSView *easingDetailView;
+    IBOutlet NSTextField *easingTypeText;
+    IBOutlet NSSlider *easingSlide;
+    double easingSlideValue;
+    double easingSlideValueMax;
+    double easingSlideValueMin;
     
     // Resource manager
     ResourceManager* resManager;
@@ -300,6 +306,10 @@ enum {
 @property (nonatomic,readonly) PlayerConnection* connection;
 
 @property (nonatomic,copy) NSString* errorDescription;
+
+@property (nonatomic, assign) double easingSlideValue;
+@property (nonatomic, assign) double easingSlideValueMax;
+@property (nonatomic, assign) double easingSlideValueMin;
 
 // Transparent window
 - (void) resizeGUIWindow:(NSSize)size;

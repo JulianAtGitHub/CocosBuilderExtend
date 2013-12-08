@@ -1628,6 +1628,79 @@ CA
                                                             <rect key="frame" x="116" y="15" width="305" height="149"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </customView>
+                                                        <customView id="oQe-Mh-qbG">
+                                                            <rect key="frame" x="420" y="15" width="175" height="149"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hEC-QK-dKp">
+                                                                    <rect key="frame" x="107" y="132" width="68" height="15"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="DrT-Fp-iCB">
+                                                                        <font key="font" metaFont="smallSystem"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="494" name="value" keyPath="self.easingSlideValue" id="9nk-b1-duf"/>
+                                                                    </connections>
+                                                                </textField>
+                                                                <textField verticalHuggingPriority="750" id="lmp-6c-6OV">
+                                                                    <rect key="frame" x="141" y="3" width="32" height="16"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="Gpi-O0-Cqp">
+                                                                        <numberFormatter key="formatter" formatterBehavior="default10_4" positiveFormat="#,##0.###" negativeFormat="#,##0.###" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="0" maximumFractionDigits="3" id="hVb-p8-p15">
+                                                                            <real key="roundingIncrement" value="0.0"/>
+                                                                            <metadata>
+                                                                                <bool key="localizesFormat" value="YES"/>
+                                                                            </metadata>
+                                                                        </numberFormatter>
+                                                                        <font key="font" metaFont="smallSystem"/>
+                                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="494" name="value" keyPath="self.easingSlideValueMin" id="UZJ-lB-XSd"/>
+                                                                    </connections>
+                                                                </textField>
+                                                                <slider horizontalHuggingPriority="750" id="rf7-bg-Po2">
+                                                                    <rect key="frame" x="148" y="17" width="21" height="99"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
+                                                                    <sliderCell key="cell" continuous="YES" alignment="left" maxValue="1" doubleValue="0.5" tickMarkPosition="left" sliderType="linear" id="zug-3p-gRV"/>
+                                                                    <connections>
+                                                                        <binding destination="494" name="maxValue" keyPath="self.easingSlideValueMax" id="hzZ-yR-uwj"/>
+                                                                        <binding destination="494" name="minValue" keyPath="self.easingSlideValueMin" previousBinding="hzZ-yR-uwj" id="rJY-CL-rTD"/>
+                                                                        <binding destination="494" name="value" keyPath="self.easingSlideValue" previousBinding="rJY-CL-rTD" id="rvO-ri-vcm"/>
+                                                                    </connections>
+                                                                </slider>
+                                                                <textField verticalHuggingPriority="750" id="YB1-6Z-tbs">
+                                                                    <rect key="frame" x="141" y="115" width="32" height="16"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="p3j-JH-n5Y">
+                                                                        <numberFormatter key="formatter" formatterBehavior="default10_4" positiveFormat="#,##0.###" negativeFormat="#,##0.###" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="0" maximumFractionDigits="3" id="Tqu-oX-lZU">
+                                                                            <real key="roundingIncrement" value="0.0"/>
+                                                                            <metadata>
+                                                                                <bool key="localizesFormat" value="YES"/>
+                                                                            </metadata>
+                                                                        </numberFormatter>
+                                                                        <font key="font" metaFont="smallSystem"/>
+                                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="494" name="value" keyPath="self.easingSlideValueMax" id="W3x-og-TYs"/>
+                                                                    </connections>
+                                                                </textField>
+                                                            </subviews>
+                                                        </customView>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="rCM-SI-ObW">
+                                                            <rect key="frame" x="421" y="147" width="76" height="16"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Easing Type" id="bWc-hG-GzX">
+                                                                <font key="font" metaFont="smallSystem"/>
+                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
                                                         <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" id="wvd-sf-0Ex">
                                                             <rect key="frame" x="0.0" y="163" width="595" height="1"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -1980,6 +2053,15 @@ CA
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="exl-1i-UrK">
+                                <rect key="frame" x="8" y="653" width="38" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="5GB-CL-sPM">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <box autoresizesSubviews="NO" horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="1235">
                                 <rect key="frame" x="-2" y="0.0" width="5" height="680"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
@@ -2063,6 +2145,9 @@ CA
             <connections>
                 <outlet property="assetsList" destination="1056" id="1057"/>
                 <outlet property="cocosView" destination="603" id="604"/>
+                <outlet property="easingDetailView" destination="oQe-Mh-qbG" id="IFk-81-coj"/>
+                <outlet property="easingSlide" destination="rf7-bg-Po2" id="Aa0-mz-7hr"/>
+                <outlet property="easingTypeText" destination="rCM-SI-ObW" id="UnD-zW-xEv"/>
                 <outlet property="inspectorScroll" destination="605" id="1039"/>
                 <outlet property="lblTimeline" destination="1237" id="1586"/>
                 <outlet property="lblTimelineChained" destination="1666" id="1687"/>

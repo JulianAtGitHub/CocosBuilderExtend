@@ -32,6 +32,9 @@ static SequencerHandlerTimeline *sharedSequencerHandlerTimeline = nil;
 @synthesize currentSequence;
 @synthesize scrubberSelectionView;
 @synthesize contextKeyframe;
+@synthesize keyframeEasingType;
+@synthesize keyframeEasingSlide;
+@synthesize keyframeEasingDetailView;
 
 + (SequencerHandlerTimeline *) sharedHandlerTimeline
 {
@@ -54,6 +57,41 @@ static SequencerHandlerTimeline *sharedSequencerHandlerTimeline = nil;
     [outlineTimeline reloadData];
     
     return self;
+}
+
+- (void) setContextKeyframe:(SequencerKeyframe *)keyframe
+{
+    if (contextKeyframe != keyframe)
+    {
+        [contextKeyframe release];
+        contextKeyframe = [keyframe retain];
+    }
+    
+    [self refreshKeyframeEasingDetail];
+}
+
+#pragma mark Easings
+
+- (void) refreshKeyframeEasingDetail
+{
+    if (contextKeyframe && contextKeyframe.easing.hasOptions) {
+        NSMenuItem* item = [appDelegate.menuContextKeyframeInterpol itemWithTag:contextKeyframe.easing.type];
+        [keyframeEasingType setStringValue:[item title]];
+        
+        float optionValue = [contextKeyframe.easing.options floatValue];
+        [keyframeEasingDetailView setHidden:NO];
+        appDelegate.easingSlideValueMin = 0.0;
+        appDelegate.easingSlideValueMax = 2.0 * optionValue;
+        appDelegate.easingSlideValue = optionValue;
+    } else {
+        if (contextKeyframe) {
+            NSMenuItem* item = [appDelegate.menuContextKeyframeInterpol itemWithTag:contextKeyframe.easing.type];
+            [keyframeEasingType setStringValue:[item title]];
+        } else {
+            [keyframeEasingType setStringValue:@""];
+        }
+        [keyframeEasingDetailView setHidden:YES];
+    }
 }
 
 #pragma mark Handle scroller

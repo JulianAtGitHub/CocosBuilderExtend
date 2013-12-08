@@ -23,6 +23,10 @@
     SequencerSequence *currentSequence;
     SequencerScrubberSelectionView *scrubberSelectionView;
     SequencerKeyframe* contextKeyframe;
+    
+    NSTextField *keyframeEasingType;
+    NSSlider *keyframeEasingSlide;
+    NSView *keyframeEasingDetailView;
 }
 
 @property (nonatomic,assign) BOOL dragAndDropEnabled;
@@ -33,6 +37,10 @@
 @property (nonatomic,retain) SequencerSequence *currentSequence;
 @property (nonatomic,retain) SequencerScrubberSelectionView *scrubberSelectionView;
 @property (nonatomic,retain) SequencerKeyframe* contextKeyframe;
+
+@property (nonatomic,retain) NSTextField *keyframeEasingType;
+@property (nonatomic,retain) NSSlider *keyframeEasingSlide;
+@property (nonatomic,retain) NSView *keyframeEasingDetailView;
 
 + (SequencerHandlerTimeline *) sharedHandlerTimeline;
 
@@ -49,5 +57,7 @@
 - (float) maxTimelineOffset;
 
 - (void) updatePropertiesToTimelinePosition;
+
+- (void) refreshKeyframeEasingDetail;
 
 @end
