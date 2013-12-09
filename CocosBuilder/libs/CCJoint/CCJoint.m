@@ -7,7 +7,7 @@
 //
 
 #import "CCJoint.h"
-#import "CCDrawNode.h"
+#import "CCSprite.h"
 #import "CCGrid.h"
 #import "kazmath/kazmath.h"
 
@@ -16,7 +16,6 @@
 
 @implementation CCJoint
 
-@synthesize fillColor = _fillColor;
 @synthesize length = _length;
 
 #pragma mark CCNode - Init & cleanup
@@ -29,31 +28,14 @@
 -(id) init
 {
 	if ((self=[super init]) ) {
-        _indicator = [[CCDrawNode alloc] init];
-        _indicator.anchorPoint = CGPointMake(0.0, 0.0); // this is optional
-        _fillColor = ccYELLOW;
-        _borderColor = ccc3(255-_fillColor.r, 255-_fillColor.g, 255-_fillColor.b);
-        _length = 1.0f;
-        
-        [self setupIndicatorPolygon];
-        [self setupIndicatorScale];
+        _indicator = [[CCSprite alloc] initWithFile:@"joint-arrow.png"];
+        _indicator.rotation = -90.0f;
+        _indicator.anchorPoint = CGPointMake(0.0, 0.5); // this is optional
+        self.length = 0.75;
+
 	}
     
 	return self;
-}
-
-- (void) setupIndicatorPolygon
-{
-    CGPoint vertices[4] = { {0.0f, 0.0f}, {-20.0f, 40.0f}, {0.0f, 500.0f}, {20.0f, 40.0f}};
-    [_indicator drawPolyWithVerts:vertices count:4 fillColor:ccc4FFromccc3B(_fillColor) borderWidth:5.0f borderColor:ccc4FFromccc3B(_borderColor)];
-}
-
-- (void) setupIndicatorScale
-{
-    float scaleY = _length * 0.2f;
-    float scaleX = _length * 0.18f;
-    [_indicator setScaleX:scaleX];
-    [_indicator setScaleY:scaleY];
 }
 
 - (void) dealloc
@@ -67,16 +49,10 @@
 
 #pragma mark property
 
-- (void)setFillColor:(ccColor3B)fillColor
-{
-    _fillColor = fillColor;
-    [self setupIndicatorPolygon];
-}
-
 - (void) setLength:(float)length
 {
     _length = length;
-    [self setupIndicatorScale];
+    [_indicator setScale:_length];
 }
 
 - (BOOL) indicatorVisible

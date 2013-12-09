@@ -1665,11 +1665,11 @@ CA
                                                                 <slider horizontalHuggingPriority="750" id="rf7-bg-Po2">
                                                                     <rect key="frame" x="148" y="17" width="21" height="99"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
-                                                                    <sliderCell key="cell" continuous="YES" alignment="left" maxValue="1" doubleValue="0.5" tickMarkPosition="left" sliderType="linear" id="zug-3p-gRV"/>
+                                                                    <sliderCell key="cell" continuous="YES" alignment="left" maxValue="1" doubleValue="0.5" tickMarkPosition="right" sliderType="linear" id="zug-3p-gRV"/>
                                                                     <connections>
+                                                                        <binding destination="494" name="value" keyPath="self.easingSlideValue" previousBinding="rJY-CL-rTD" id="rvO-ri-vcm"/>
                                                                         <binding destination="494" name="maxValue" keyPath="self.easingSlideValueMax" id="hzZ-yR-uwj"/>
                                                                         <binding destination="494" name="minValue" keyPath="self.easingSlideValueMin" previousBinding="hzZ-yR-uwj" id="rJY-CL-rTD"/>
-                                                                        <binding destination="494" name="value" keyPath="self.easingSlideValue" previousBinding="rJY-CL-rTD" id="rvO-ri-vcm"/>
                                                                     </connections>
                                                                 </slider>
                                                                 <textField verticalHuggingPriority="750" id="YB1-6Z-tbs">
@@ -2053,15 +2053,6 @@ CA
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="exl-1i-UrK">
-                                <rect key="frame" x="8" y="653" width="38" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="5GB-CL-sPM">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <box autoresizesSubviews="NO" horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="1235">
                                 <rect key="frame" x="-2" y="0.0" width="5" height="680"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>

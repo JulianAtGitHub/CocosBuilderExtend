@@ -917,10 +917,10 @@ static CocosScene* sharedCocosScene;
             deltaRotation = -deltaRotation;
         }
         
-//        while ( deltaRotation > 180.0f )
-//            deltaRotation -= 360.0f;
-//        while ( deltaRotation < -180.0f )
-//            deltaRotation += 360.0f;
+        while ( deltaRotation > 180.0f )
+            deltaRotation -= 360.0f;
+        while ( deltaRotation < -180.0f )
+            deltaRotation += 360.0f;
         
         float newRotation = (transformStartRotation + deltaRotation);
         

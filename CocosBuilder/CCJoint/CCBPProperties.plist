@@ -38,7 +38,7 @@
 		</dict>
 		<dict>
 			<key>defaultSerialization</key>
-			<integer>1</integer>
+			<real>0.75</real>
 			<key>displayName</key>
 			<string>Length</string>
 			<key>type</key>

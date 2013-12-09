@@ -28,33 +28,12 @@
 
 #import "CCNode.h"
 
-@class CCDrawNode;
+@class CCSprite;
 
 @interface CCJoint : CCNode
-{
-    // a indicator polygon, this node will draw at last
-    CCDrawNode *_indicator;
-    
-    // the _indicator fill color
-    ccColor3B _fillColor;
-    
-    // the _indicator border color
-    ccColor3B _borderColor;
-    
-    // the langth of indicator, whitch is set to it's scaleY
-    float _length;
-}
 
-@property(nonatomic,readwrite,assign) ccColor3B fillColor;
-
+// this property is not used
 @property(nonatomic,readwrite,assign) float length;
-
 @property(nonatomic,readwrite) BOOL indicatorVisible;
-
-// initializators
-/** allocates and initializes a node.
- The node will be created as "autorelease".
- */
-+(id) node;
 
 @end

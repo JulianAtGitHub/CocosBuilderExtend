@@ -28,24 +28,16 @@
 
 #import "CCNode.h"
 
-@class CCDrawNode;
+@class CCSprite;
 
 @interface CCJoint : CCNode
 {
-    // a indicator polygon, this node will draw at last
-    CCDrawNode *_indicator;
-    
-    // the _indicator fill color
-    ccColor3B _fillColor;
-    
-    // the _indicator border color
-    ccColor3B _borderColor;
+    // a indicator sprite, this node will draw at last
+    CCSprite *_indicator;
     
     // the langth of indicator, whitch is set to it's scaleY
     float _length;
 }
-
-@property(nonatomic,readwrite,assign) ccColor3B fillColor;
 
 @property(nonatomic,readwrite,assign) float length;
 
