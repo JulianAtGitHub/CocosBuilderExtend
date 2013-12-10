@@ -11,7 +11,7 @@
 	<key>className</key>
 	<string>CCJoint</string>
 	<key>editorClassName</key>
-	<string>CCJoint</string>
+	<string>CCBJoint</string>
 	<key>propertiesOverridden</key>
 	<array/>
 	<key>properties</key>

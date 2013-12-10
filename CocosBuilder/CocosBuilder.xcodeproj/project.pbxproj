@@ -16,6 +16,7 @@
 		58FA2034162D73F3006B8856 /* TB_bottomPanel.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FA2031162D73F3006B8856 /* TB_bottomPanel.png */; };
 		58FA2035162D73F3006B8856 /* TB_leftPanel.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FA2032162D73F3006B8856 /* TB_leftPanel.png */; };
 		58FA2036162D73F3006B8856 /* TB_rightPanel.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FA2033162D73F3006B8856 /* TB_rightPanel.png */; };
+		62A9053F18570AE600424061 /* CCBJoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A9053E18570AE600424061 /* CCBJoint.m */; };
 		62B2B3D3184D86D900B9F46D /* seq-btn-node.png in Resources */ = {isa = PBXBuildFile; fileRef = 62B2B3D1184D86D900B9F46D /* seq-btn-node.png */; };
 		62B2B3D4184D86D900B9F46D /* seq-btn-tree.png in Resources */ = {isa = PBXBuildFile; fileRef = 62B2B3D2184D86D900B9F46D /* seq-btn-tree.png */; };
 		62CB60C318502A4D001B2600 /* CCJoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 62CB60C218502A4D001B2600 /* CCJoint.m */; };
@@ -685,6 +686,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		62A9054218570D5D00424061 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7789ABB5133AA82000CEFCC7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 62CB60C51850691A001B2600;
+			remoteInfo = CCJoint;
+		};
 		E325F66814F6611300D29BCF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7789ABB5133AA82000CEFCC7 /* Project object */;
@@ -892,6 +900,8 @@
 		58FA2031162D73F3006B8856 /* TB_bottomPanel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TB_bottomPanel.png; sourceTree = "<group>"; };
 		58FA2032162D73F3006B8856 /* TB_leftPanel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TB_leftPanel.png; sourceTree = "<group>"; };
 		58FA2033162D73F3006B8856 /* TB_rightPanel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TB_rightPanel.png; sourceTree = "<group>"; };
+		62A9053D18570AE600424061 /* CCBJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBJoint.h; sourceTree = "<group>"; };
+		62A9053E18570AE600424061 /* CCBJoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBJoint.m; sourceTree = "<group>"; };
 		62B2B3D1184D86D900B9F46D /* seq-btn-node.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seq-btn-node.png"; sourceTree = "<group>"; };
 		62B2B3D2184D86D900B9F46D /* seq-btn-tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seq-btn-tree.png"; sourceTree = "<group>"; };
 		62CB60C118502A4D001B2600 /* CCJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCJoint.h; sourceTree = "<group>"; };
@@ -2139,6 +2149,8 @@
 			isa = PBXGroup;
 			children = (
 				62CB60E018506A31001B2600 /* Supporting Files */,
+				62A9053D18570AE600424061 /* CCBJoint.h */,
+				62A9053E18570AE600424061 /* CCBJoint.m */,
 			);
 			path = CCJoint;
 			sourceTree = "<group>";
@@ -4232,6 +4244,7 @@
 				E3C65123151BB8CD00D639C0 /* PBXTargetDependency */,
 				E3B84C47151A2C89004B743C /* PBXTargetDependency */,
 				E3FCE8731524859A0028E8E7 /* PBXTargetDependency */,
+				62A9054318570D5D00424061 /* PBXTargetDependency */,
 			);
 			name = CocosBuilder;
 			productName = ccBuilder;
@@ -5025,6 +5038,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62A9053F18570AE600424061 /* CCBJoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5485,6 +5499,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		62A9054318570D5D00424061 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 62CB60C51850691A001B2600 /* CCJoint */;
+			targetProxy = 62A9054218570D5D00424061 /* PBXContainerItemProxy */;
+		};
 		E325F66914F6611300D29BCF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E325F65914F65C8E00D29BCF /* CCMenuItemImage */;

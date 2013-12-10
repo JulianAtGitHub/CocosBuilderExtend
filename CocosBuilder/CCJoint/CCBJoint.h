@@ -26,14 +26,14 @@
 //
 //
 
-#import "CCNode.h"
+#import "CCJoint.h"
 
 @class CCSprite;
 
-@interface CCJoint : CCNode
-
-// this property is not used
-@property(nonatomic,readwrite,assign) float length;
-@property(nonatomic,readwrite) BOOL indicatorVisible;
+@interface CCBJoint : CCJoint
+{
+    // a indicator sprite, this node will draw at last
+    CCSprite *_indicator;
+}
 
 @end
