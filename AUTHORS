@@ -1,11 +1,12 @@
 CocosBuilder - Authors
 
-Julian Green:
-
 Lead developer:
     Viktor Lidholt (http://www.cocosbuilder.com/)
 
 People/companies who were/are contributing code to CocosBuilder (alphabetically ordered):
+
+* Julian Green 
+    Add Joint Node and plugin corresponding
 
 * Stacey Abshire (http://www.4haks.net)
     Bug fix in sprite sheet generation
