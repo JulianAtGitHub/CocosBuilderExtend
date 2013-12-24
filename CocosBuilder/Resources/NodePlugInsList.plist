@@ -68,14 +68,6 @@
 		</dict>
 		<dict>
 			<key>groupName</key>
-			<string>Joint</string>
-			<key>plugIns</key>
-			<array>
-				<string>CCJoint</string>
-			</array>
-		</dict>
-		<dict>
-			<key>groupName</key>
 			<string>CCB</string>
 			<key>plugIns</key>
 			<array>
