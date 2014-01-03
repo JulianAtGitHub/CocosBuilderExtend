@@ -19,11 +19,6 @@
 			<key>orderHint</key>
 			<integer>14</integer>
 		</dict>
-		<key>CCJoint.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>21</integer>
-		</dict>
 		<key>CCLabelBMFont.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
