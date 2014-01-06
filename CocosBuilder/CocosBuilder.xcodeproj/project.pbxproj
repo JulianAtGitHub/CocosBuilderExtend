@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		250563891876BAA700C78905 /* MGSFragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250563881876BAA700C78905 /* MGSFragaria.framework */; };
-		2505638A1876BAD200C78905 /* MGSFragaria.framework in Copy Files (Sparkle framework) */ = {isa = PBXBuildFile; fileRef = 250563881876BAA700C78905 /* MGSFragaria.framework */; };
+		25408B1E187A7857002C165E /* MGSFragaria.framework in Copy Files (Sparkle framework) */ = {isa = PBXBuildFile; fileRef = 25408B1D187A7857002C165E /* MGSFragaria.framework */; };
+		25408B1F187A7870002C165E /* MGSFragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25408B1D187A7857002C165E /* MGSFragaria.framework */; };
 		2545F349184A06DE0012CFD8 /* SequencerHandlerStructure.m in Sources */ = {isa = PBXBuildFile; fileRef = 2545F345184A06C90012CFD8 /* SequencerHandlerStructure.m */; };
 		255DD6ED1851CDDA00E9DCF0 /* seq-btn-oneByOne.png in Resources */ = {isa = PBXBuildFile; fileRef = 255DD6EB1851CDDA00E9DCF0 /* seq-btn-oneByOne.png */; };
 		255DD6EE1851CDDA00E9DCF0 /* seq-btn-repeat.png in Resources */ = {isa = PBXBuildFile; fileRef = 255DD6EC1851CDDA00E9DCF0 /* seq-btn-repeat.png */; };
@@ -799,7 +799,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2505638A1876BAD200C78905 /* MGSFragaria.framework in Copy Files (Sparkle framework) */,
+				25408B1E187A7857002C165E /* MGSFragaria.framework in Copy Files (Sparkle framework) */,
 				E33BC1981510B9DE009AE29A /* Sparkle.framework in Copy Files (Sparkle framework) */,
 			);
 			name = "Copy Files (Sparkle framework)";
@@ -844,7 +844,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		250563881876BAA700C78905 /* MGSFragaria.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MGSFragaria.framework; path = libs/MGSFragaria.framework; sourceTree = "<group>"; };
+		25408B1D187A7857002C165E /* MGSFragaria.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MGSFragaria.framework; path = libs/MGSFragaria.framework; sourceTree = "<group>"; };
 		2545F344184A06C90012CFD8 /* SequencerHandlerStructure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SequencerHandlerStructure.h; sourceTree = "<group>"; };
 		2545F345184A06C90012CFD8 /* SequencerHandlerStructure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SequencerHandlerStructure.m; sourceTree = "<group>"; };
 		255DD6EB1851CDDA00E9DCF0 /* seq-btn-oneByOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seq-btn-oneByOne.png"; sourceTree = "<group>"; };
@@ -1912,7 +1912,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				250563891876BAA700C78905 /* MGSFragaria.framework in Frameworks */,
+				25408B1F187A7870002C165E /* MGSFragaria.framework in Frameworks */,
 				835DB0CB17156421003A2F7B /* Security.framework in Frameworks */,
 				E3A4747C16D43BF300DB0D61 /* AVFoundation.framework in Frameworks */,
 				E3A4747A16D43BEA00DB0D61 /* OpenAL.framework in Frameworks */,
@@ -2453,7 +2453,7 @@
 		7789ABC1133AA82000CEFCC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				250563881876BAA700C78905 /* MGSFragaria.framework */,
+				25408B1D187A7857002C165E /* MGSFragaria.framework */,
 				835DB0CA17156421003A2F7B /* Security.framework */,
 				E3A4747B16D43BF300DB0D61 /* AVFoundation.framework */,
 				E3A4747916D43BEA00DB0D61 /* OpenAL.framework */,

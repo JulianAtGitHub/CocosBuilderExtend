@@ -8,17 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
-		2505634F1876B1BA00C78905 /* MGSFragariaFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = ABD0FD7F119326FE00E6AFE6 /* MGSFragariaFramework.h */; };
+		2505634F1876B1BA00C78905 /* MGSFragariaFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = ABD0FD7F119326FE00E6AFE6 /* MGSFragariaFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		256AC3DA0F4B6AC300CF3369 /* FragariaAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* FragariaAppDelegate.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		AB257FCE129B1BF500A3FF76 /* SMLTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = AB69B666118B768000903D1D /* SMLTextView.h */; };
-		AB257FE0129B1CE300A3FF76 /* MGSSyntaxController.h in Headers */ = {isa = PBXBuildFile; fileRef = AB3971C8118C1F8A00AEF388 /* MGSSyntaxController.h */; };
-		AB257FE1129B1CE300A3FF76 /* MGSPreferencesController.h in Headers */ = {isa = PBXBuildFile; fileRef = AB69B809118B8D0400903D1D /* MGSPreferencesController.h */; };
-		AB257FE2129B1CE300A3FF76 /* MGSFragariaPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = ABD0FE581193543600E6AFE6 /* MGSFragariaPreferences.h */; };
-		AB257FE4129B1CE300A3FF76 /* MGSTextMenuController.h in Headers */ = {isa = PBXBuildFile; fileRef = AB472B7B1299732F00202CB5 /* MGSTextMenuController.h */; };
-		AB257FE5129B1CE300A3FF76 /* MGSExtraInterfaceController.h in Headers */ = {isa = PBXBuildFile; fileRef = AB472BF51299BBBA00202CB5 /* MGSExtraInterfaceController.h */; };
+		AB257FCE129B1BF500A3FF76 /* SMLTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = AB69B666118B768000903D1D /* SMLTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AB257FE0129B1CE300A3FF76 /* MGSSyntaxController.h in Headers */ = {isa = PBXBuildFile; fileRef = AB3971C8118C1F8A00AEF388 /* MGSSyntaxController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AB257FE1129B1CE300A3FF76 /* MGSPreferencesController.h in Headers */ = {isa = PBXBuildFile; fileRef = AB69B809118B8D0400903D1D /* MGSPreferencesController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AB257FE2129B1CE300A3FF76 /* MGSFragariaPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = ABD0FE581193543600E6AFE6 /* MGSFragariaPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AB257FE4129B1CE300A3FF76 /* MGSTextMenuController.h in Headers */ = {isa = PBXBuildFile; fileRef = AB472B7B1299732F00202CB5 /* MGSTextMenuController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AB257FE5129B1CE300A3FF76 /* MGSExtraInterfaceController.h in Headers */ = {isa = PBXBuildFile; fileRef = AB472BF51299BBBA00202CB5 /* MGSExtraInterfaceController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB3971CB118C1F8A00AEF388 /* MGSSyntaxController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3971C9118C1F8A00AEF388 /* MGSSyntaxController.m */; };
 		AB39723A118C27E700AEF388 /* SyntaxDefinitions.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB3971E6118C27E700AEF388 /* SyntaxDefinitions.plist */; };
 		AB3972E5118C28E700AEF388 /* Syntax Definitions in Resources */ = {isa = PBXBuildFile; fileRef = AB397291118C28E700AEF388 /* Syntax Definitions */; };
@@ -53,24 +53,24 @@
 		AB69B6CC118B7D3E00903D1D /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AB69B6CB118B7D3E00903D1D /* libicucore.dylib */; };
 		AB69B6DA118B7F2A00903D1D /* SMLLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB69B6D9118B7F2A00903D1D /* SMLLayoutManager.m */; };
 		AB69B74A118B80A000903D1D /* MGSFragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB69B62B118B745700903D1D /* MGSFragaria.framework */; };
-		AB69B754118B830700903D1D /* MGSFragaria.h in Headers */ = {isa = PBXBuildFile; fileRef = AB69B753118B830700903D1D /* MGSFragaria.h */; };
+		AB69B754118B830700903D1D /* MGSFragaria.h in Headers */ = {isa = PBXBuildFile; fileRef = AB69B753118B830700903D1D /* MGSFragaria.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB69B80C118B8D0400903D1D /* MGSPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB69B80A118B8D0400903D1D /* MGSPreferencesController.m */; };
 		ABA812DC11B6855200A29990 /* LICENSE-2.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = ABA812DB11B6855200A29990 /* LICENSE-2.0.txt */; };
 		ABD0FDB01193281600E6AFE6 /* MGSFragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB69B62B118B745700903D1D /* MGSFragaria.framework */; };
 		ABF28AF014C075D400ECAD48 /* NSScanner+Fragaria.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF28AEE14C075D400ECAD48 /* NSScanner+Fragaria.m */; };
-		ABF28AF114C075D400ECAD48 /* NSScanner+Fragaria.h in Headers */ = {isa = PBXBuildFile; fileRef = ABF28AEF14C075D400ECAD48 /* NSScanner+Fragaria.h */; };
-		E373BF131718A64700D71602 /* SMLAutoCompleteDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = E373BF121718A64700D71602 /* SMLAutoCompleteDelegate.h */; };
+		ABF28AF114C075D400ECAD48 /* NSScanner+Fragaria.h in Headers */ = {isa = PBXBuildFile; fileRef = ABF28AEF14C075D400ECAD48 /* NSScanner+Fragaria.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E373BF131718A64700D71602 /* SMLAutoCompleteDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = E373BF121718A64700D71602 /* SMLAutoCompleteDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E38654AD1717652000A345B9 /* ErrorPopoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E38654AC1717652000A345B9 /* ErrorPopoverView.xib */; };
 		E3AA871B16E1817800585940 /* editor-breakpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = E3AA871A16E1817800585940 /* editor-breakpoint.png */; };
 		E3BBA50B16E52FE600D89923 /* editor-breakpoint-0.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BBA50816E52FE600D89923 /* editor-breakpoint-0.png */; };
 		E3BBA50C16E52FE600D89923 /* editor-breakpoint-1.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BBA50916E52FE600D89923 /* editor-breakpoint-1.png */; };
 		E3BBA50D16E52FE600D89923 /* editor-breakpoint-2.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BBA50A16E52FE600D89923 /* editor-breakpoint-2.png */; };
 		E3C185001717597200801FE5 /* editor-warning.png in Resources */ = {isa = PBXBuildFile; fileRef = E3C184FF1717597200801FE5 /* editor-warning.png */; };
-		E3C1850317175ED900801FE5 /* SMLErrorPopOver.h in Headers */ = {isa = PBXBuildFile; fileRef = E3C1850117175ED900801FE5 /* SMLErrorPopOver.h */; };
+		E3C1850317175ED900801FE5 /* SMLErrorPopOver.h in Headers */ = {isa = PBXBuildFile; fileRef = E3C1850117175ED900801FE5 /* SMLErrorPopOver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E3C1850417175ED900801FE5 /* SMLErrorPopOver.m in Sources */ = {isa = PBXBuildFile; fileRef = E3C1850217175ED900801FE5 /* SMLErrorPopOver.m */; };
 		E3CB31141728B9B800A9B73F /* editor-stopmarker.png in Resources */ = {isa = PBXBuildFile; fileRef = E3CB31131728B9B800A9B73F /* editor-stopmarker.png */; };
-		E3CF4B7916E6927300C27B5C /* MGSBreakpointDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = E3CF4B7816E6927300C27B5C /* MGSBreakpointDelegate.h */; };
-		E3D4B2771714D89700BB2CC6 /* SMLSyntaxError.h in Headers */ = {isa = PBXBuildFile; fileRef = E3D4B2751714D89700BB2CC6 /* SMLSyntaxError.h */; };
+		E3CF4B7916E6927300C27B5C /* MGSBreakpointDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = E3CF4B7816E6927300C27B5C /* MGSBreakpointDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E3D4B2771714D89700BB2CC6 /* SMLSyntaxError.h in Headers */ = {isa = PBXBuildFile; fileRef = E3D4B2751714D89700BB2CC6 /* SMLSyntaxError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E3D4B2781714D89700BB2CC6 /* SMLSyntaxError.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D4B2761714D89700BB2CC6 /* SMLSyntaxError.m */; };
 /* End PBXBuildFile section */
 
@@ -832,8 +832,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INFOPLIST_FILE = "MGSFragaria-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -842,7 +841,6 @@
 				);
 				PRODUCT_NAME = MGSFragaria;
 				SDKROOT = macosx;
-				SKIP_INSTALL = NO;
 				VERSIONING_SYSTEM = "";
 			};
 			name = Debug;
@@ -861,8 +859,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INFOPLIST_FILE = "MGSFragaria-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -871,7 +868,6 @@
 				);
 				PRODUCT_NAME = MGSFragaria;
 				SDKROOT = macosx;
-				SKIP_INSTALL = NO;
 				VERSIONING_SYSTEM = "";
 				ZERO_LINK = NO;
 			};
@@ -936,7 +932,7 @@
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "icu/**";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				ONLY_ACTIVE_ARCH = YES;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
@@ -976,7 +972,7 @@
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "icu/**";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
 				SKIP_INSTALL = NO;
