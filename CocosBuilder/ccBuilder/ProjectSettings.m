@@ -137,6 +137,7 @@
 @synthesize javascriptBased;
 @synthesize javascriptMainCCB;
 @synthesize onlyPublishCCBs;
+@synthesize removePublishPath;
 @synthesize exporter;
 @synthesize availableExporters;
 @synthesize deviceOrientationPortrait;
@@ -160,6 +161,7 @@
     self.publishDirectoryAndroid = @"Published-Android";
     self.publishDirectoryHTML5 = @"Published-HTML5";
     self.onlyPublishCCBs = NO;
+    self.removePublishPath = YES;
     self.flattenPaths = NO;
     self.javascriptBased = YES;
     self.publishToZipFile = NO;
@@ -250,6 +252,7 @@
     self.publishToZipFile = [[dict objectForKey:@"publishToZipFile"] boolValue];
     self.javascriptBased = [[dict objectForKey:@"javascriptBased"] boolValue];
     self.onlyPublishCCBs = [[dict objectForKey:@"onlyPublishCCBs"] boolValue];
+    self.removePublishPath = [[dict objectForKey:@"removePublishPath"] boolValue];
     self.exporter = [dict objectForKey:@"exporter"];
     self.deviceOrientationPortrait = [[dict objectForKey:@"deviceOrientationPortrait"] boolValue];
     self.deviceOrientationUpsideDown = [[dict objectForKey:@"deviceOrientationUpsideDown"] boolValue];
@@ -349,6 +352,7 @@
     [dict setObject:[NSNumber numberWithBool:publishToZipFile] forKey:@"publishToZipFile"];
     [dict setObject:[NSNumber numberWithBool:javascriptBased] forKey:@"javascriptBased"];
     [dict setObject:[NSNumber numberWithBool:onlyPublishCCBs] forKey:@"onlyPublishCCBs"];
+    [dict setObject:[NSNumber numberWithBool:removePublishPath] forKey:@"removePublishPath"];
     [dict setObject:self.exporter forKey:@"exporter"];
     
     [dict setObject:[NSNumber numberWithBool:deviceOrientationPortrait] forKey:@"deviceOrientationPortrait"];

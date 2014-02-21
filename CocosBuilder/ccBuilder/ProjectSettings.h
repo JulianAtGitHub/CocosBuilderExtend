@@ -90,6 +90,7 @@
     BOOL publishToZipFile;
     BOOL javascriptBased;
     BOOL onlyPublishCCBs;
+    BOOL removePublishPath;
     NSString* exporter;
     NSMutableArray* availableExporters;
     NSString* javascriptMainCCB;
@@ -138,6 +139,7 @@
 @property (nonatomic, assign) BOOL publishToZipFile;
 @property (nonatomic, assign) BOOL javascriptBased;
 @property (nonatomic, assign) BOOL onlyPublishCCBs;
+@property (nonatomic, assign) BOOL removePublishPath;
 @property (nonatomic, readonly) NSArray* absoluteResourcePaths;
 @property (nonatomic, copy) NSString* exporter;
 @property (nonatomic, retain) NSMutableArray* availableExporters;

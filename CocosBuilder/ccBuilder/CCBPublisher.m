@@ -416,6 +416,8 @@
             // Skip the fold no .ccb files when onlyPublishCCBs is true
             if(projectSettings.onlyPublishCCBs && ![self containsCCBFile:filePath]) continue;
             
+            if(projectSettings.onlyPublishCCBs) childPath = @"";
+            
             [self publishDirectory:filePath subPath:childPath];
         }
         else
@@ -894,7 +896,7 @@
 - (BOOL) publish_
 {
     // Remove all old publish directories if user has cleaned the cache
-    if (projectSettings.needRepublish)
+    if (projectSettings.needRepublish && projectSettings.removePublishPath)
     {
         NSFileManager *fm = [NSFileManager defaultManager];
         NSString* publishDir;
