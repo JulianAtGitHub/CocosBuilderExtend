@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ccBuilder/CCBPublisher.m"
-            timestampString = "411043635.278247"
+            timestampString = "414667650.984275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "500"
-            endingLineNumber = "500"
+            startingLineNumber = "498"
+            endingLineNumber = "498"
             landmarkName = "-publishDirectory:subPath:"
             landmarkType = "5">
          </BreakpointContent>

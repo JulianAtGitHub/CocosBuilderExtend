@@ -416,8 +416,6 @@
             // Skip the fold no .ccb files when onlyPublishCCBs is true
             if(projectSettings.onlyPublishCCBs && ![self containsCCBFile:filePath]) continue;
             
-            if(projectSettings.onlyPublishCCBs) childPath = @"";
-            
             [self publishDirectory:filePath subPath:childPath];
         }
         else
