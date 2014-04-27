@@ -278,7 +278,7 @@ static SequencerHandlerStructure *sharedSequencerHandlerStructure = nil;
     
     appDelegate.selectedNodes = selectedNodes;
     
-    [appDelegate updateInspectorFromSelection];
+//    [appDelegate updateInspectorFromSelection];
 }
 
 - (void)outlineViewItemDidCollapse:(NSNotification *)notification

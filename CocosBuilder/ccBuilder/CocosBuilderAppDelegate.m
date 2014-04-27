@@ -604,7 +604,7 @@ static CocosBuilderAppDelegate* sharedAppDelegate;
 }
 
 
-static InspectorValue* lastInspectorValue;
+//static InspectorValue* lastInspectorValue;
 static BOOL hideAllToNextSeparator;
 
 - (int) addInspectorPropertyOfType:(NSString*)type name:(NSString*)prop displayName:(NSString*)displayName extra:(NSString*)e readOnly:(BOOL)readOnly affectsProps:(NSArray*)affectsProps atOffset:(int)offset
@@ -613,8 +613,8 @@ static BOOL hideAllToNextSeparator;
     
     // Create inspector
     InspectorValue* inspectorValue = [InspectorValue inspectorOfType:type withSelection:self.selectedNode andPropertyName:prop andDisplayName:displayName andExtra:e];
-    lastInspectorValue.inspectorValueBelow = inspectorValue;
-    lastInspectorValue = inspectorValue;
+//    lastInspectorValue.inspectorValueBelow = inspectorValue;
+//    lastInspectorValue = inspectorValue;
     inspectorValue.readOnly = readOnly;
     inspectorValue.rootNode = (self.selectedNode == [CocosScene cocosScene].rootNode);
     
@@ -701,6 +701,7 @@ static BOOL hideAllToNextSeparator;
     {
         NSView* pane = [panes objectAtIndex:i];
         [pane removeFromSuperview];
+        [pane release];
     }
     [currentInspectorValues removeAllObjects];
     
