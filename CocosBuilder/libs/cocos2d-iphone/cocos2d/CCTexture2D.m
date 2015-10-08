@@ -711,7 +711,7 @@ static CCTexture2DPixelFormat defaultAlphaPixel_format = kCCTexture2DPixelFormat
 @implementation CCTexture2D (PVRSupport)
 
 // By default PVR images are treated as if they don't have the alpha channel premultiplied
-static BOOL _PVRHaveAlphaPremultiplied = NO;
+static BOOL _PVRHaveAlphaPremultiplied = YES;
 
 -(id) initWithPVRFile: (NSString*) relPath
 {

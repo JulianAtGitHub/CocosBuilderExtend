@@ -47,6 +47,16 @@
 		</dict>
 		<dict>
 			<key>displayName</key>
+			<string>Position Type</string>
+			<key>name</key>
+			<string>positionType</string>
+			<key>type</key>
+			<string>IntegerLabeled</string>
+			<key>extra</key>
+			<string>Free type|0|Relative type|1|Grouped type|3</string>
+		</dict>
+		<dict>
+			<key>displayName</key>
 			<string>Mode</string>
 			<key>name</key>
 			<string>emitterMode</string>

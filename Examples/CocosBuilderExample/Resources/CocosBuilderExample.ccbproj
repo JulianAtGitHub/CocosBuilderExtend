@@ -25,7 +25,7 @@
 	<key>javascriptMainCCB</key>
 	<string></string>
 	<key>needRepublish</key>
-	<false/>
+	<true/>
 	<key>onlyPublishCCBs</key>
 	<true/>
 	<key>publishDirectory</key>
@@ -66,6 +66,8 @@
 	<false/>
 	<key>publishToZipFile</key>
 	<false/>
+	<key>removePublishPath</key>
+	<false/>
 	<key>resourceAutoScaleFactor</key>
 	<integer>4</integer>
 	<key>resourcePaths</key>
@@ -75,5 +77,8 @@
 			<string>.</string>
 		</dict>
 	</array>
+	<key>versionStr</key>
+	<string>Version: 3.0.0-qidea
+</string>
 </dict>
 </plist>

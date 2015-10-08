@@ -658,7 +658,7 @@ void FNTConfigRemoveCache( void )
             //Find position of last character on the line
             CCSprite *lastChar = (CCSprite *)[self getChildByTag:index];
 			
-            lineWidth = lastChar.position.x + lastChar.contentSize.width/2;
+            lineWidth = lastChar.position.x + lastChar.contentSize.width/2 + index * _gap;
 			
             //Figure out how much to shift each character in this line horizontally
             float shift = 0;
@@ -738,7 +738,7 @@ void FNTConfigRemoveCache( void )
 	nextFontPositionY = -(_configuration->_commonHeight - _configuration->_commonHeight*quantityOfLines);
     CGRect rect;
     ccBMFontDef fontDef;
-
+    float gap = 0;
 	for(NSUInteger i = 0; i<stringLen; i++) {
 		unichar c = [_string characterAtIndex:i];
         
@@ -815,15 +815,16 @@ void FNTConfigRemoveCache( void )
 		NSInteger yOffset = _configuration->_commonHeight - fontDef.yOffset;
 		CGPoint fontPos = ccp( (CGFloat)nextFontPositionX + fontDef.xOffset + fontDef.rect.size.width*0.5f + kerningAmount,
 							  (CGFloat)nextFontPositionY + yOffset - rect.size.height*0.5f * CC_CONTENT_SCALE_FACTOR() );
+        fontPos.x += gap;
+        gap += _gap;
         fontChar.position = CC_POINT_PIXELS_TO_POINTS(fontPos);
 		
 		// update kerning
 		nextFontPositionX += fontDef.xAdvance + kerningAmount;
 		prev = c;
-        
 
-		if (longestLine < nextFontPositionX)
-			longestLine = nextFontPositionX;
+        if (longestLine < nextFontPositionX)
+			longestLine = nextFontPositionX ;
 		
 		if( ! hasSprite )
 			[self updateQuadFromSprite:fontChar quadIndex:i];
@@ -833,9 +834,9 @@ void FNTConfigRemoveCache( void )
     // to adjust the width of the string to take this into account, or the character will overlap the end of the bounding
     // box
     if (fontDef.xAdvance < fontDef.rect.size.width) {
-        tmpSize.width = longestLine + fontDef.rect.size.width - fontDef.xAdvance;
+        tmpSize.width = longestLine + fontDef.rect.size.width - fontDef.xAdvance + gap - _gap;
     } else {
-        tmpSize.width = longestLine;
+        tmpSize.width = longestLine + gap - _gap;
     }
     tmpSize.height = totalHeight;
     
@@ -1004,6 +1005,11 @@ void FNTConfigRemoveCache( void )
 - (NSString*) fntFile
 {
     return _fntFile;
+}
+
+-(void) setGap:(float)gap {
+    _gap = gap;
+    [self updateLabel];
 }
 
 #pragma mark LabelBMFont - Debug draw

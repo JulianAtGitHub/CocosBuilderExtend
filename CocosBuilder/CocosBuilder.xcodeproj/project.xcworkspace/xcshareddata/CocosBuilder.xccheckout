@@ -10,29 +10,29 @@
 	<string>CocosBuilder</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>A7F01F23-A1BA-4FD2-BA1C-10DC07DB0E9D</key>
+		<key>F063EBAF569E7E01EA9B765BD92554E18B2275F8</key>
 		<string>https://github.com/JulianAtGitHub/CocosBuilderExtend.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>CocosBuilder/CocosBuilder.xcodeproj/project.xcworkspace</string>
+	<string>CocosBuilder/CocosBuilder.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>A7F01F23-A1BA-4FD2-BA1C-10DC07DB0E9D</key>
+		<key>F063EBAF569E7E01EA9B765BD92554E18B2275F8</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/JulianAtGitHub/CocosBuilderExtend.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>A7F01F23-A1BA-4FD2-BA1C-10DC07DB0E9D</string>
+	<string>F063EBAF569E7E01EA9B765BD92554E18B2275F8</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>A7F01F23-A1BA-4FD2-BA1C-10DC07DB0E9D</string>
+			<string>F063EBAF569E7E01EA9B765BD92554E18B2275F8</string>
 			<key>IDESourceControlWCCName</key>
 			<string>CocosBuilderExtend</string>
 		</dict>

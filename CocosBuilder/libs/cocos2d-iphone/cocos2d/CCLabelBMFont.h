@@ -203,6 +203,8 @@ typedef struct _KerningHashElement
 @property (nonatomic,readwrite) GLubyte opacity;
 /** conforms to CCRGBAProtocol protocol */
 @property (nonatomic,readwrite) ccColor3B color;
+/** stretch a gap between character*/
+@property (nonatomic,readwrite) float gap;
 
 
 /** creates a BMFont label with an initial string and the FNT file. */

@@ -104,6 +104,16 @@
 			<string>blendFunc</string>
 		</dict>
 		<dict>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
+			<key>type</key>
+			<string>Float</string>
+			<key>name</key>
+			<string>gap</string>
+			<key>displayName</key>
+			<string>Gap</string>
+		</dict>
+		<dict>
 			<key>affectsProperties</key>
 			<array>
 				<string>contentSize</string>
