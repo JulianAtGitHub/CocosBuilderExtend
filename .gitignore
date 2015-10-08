@@ -1,8 +1,29 @@
 
-CocosBuilder/CocosBuilder.xcodeproj/project.xcworkspace/xcuserdata/weizhu.xcuserdatad/UserInterfaceState.xcuserstate
+# Executables
+# *.exe
+*.out
+# *.app
+*.i*86
+*.x86_64
+*.hex
 
-CocosBuilder/CocosBuilder.xcodeproj/project.xcworkspace/xcuserdata/weizhu.xcuserdatad/UserInterfaceState.xcuserstate
+# OS X
+.DS_Store
 
-CocosBuilder/CocosBuilder.xcodeproj/project.xcworkspace/xcuserdata/weizhu.xcuserdatad/UserInterfaceState.xcuserstate
-
-CocosBuilder/CocosBuilder.xcodeproj/project.xcworkspace/xcuserdata/weizhu.xcuserdatad/UserInterfaceState.xcuserstate
+# Xcode
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+profile
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
